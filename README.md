@@ -1,4 +1,4 @@
-# Shoppaholick Bazaar
+# Shoppaholik Bazaar
 
 
 <div align="center">
@@ -14,7 +14,7 @@
 
 <div align="center">
  
-  <h3 align="center">ROUNDHOUSE JOKES</h3>
+  <h3 align="center">Shoppaholik</h3>
 
   <p align="center">
  Roundhouse Jokes is your go-to app for an endless supply of laughs! Featuring a mix of classic humor and the legendary wit of Chuck Norris, this app is designed to deliver a new joke every time you need a pick-me-up. Whether you're a fan of quick one-liners, punny jokes, or the unstoppable humor of Chuck Norris, Roundhouse Jokes has got you covered!
