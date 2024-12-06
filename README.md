@@ -14,7 +14,9 @@
 
 <div align="center">
  
+
   <h3 align="center">Shoppaholik Bazaar</h3>
+
 
   <p align="center">
  "Shoppaholik Bazaar: Where Deals Meet Feels!
