@@ -32,8 +32,8 @@ const userSchema = new Schema<UserDocument>(
       type: String,
       required: true,
     },
-    // set savedBooks to be an array of data that adheres to the bookSchema
-    savedBooks: [bookSchema],
+    // set saveditems to be an array of data that adheres to the itemschema
+    savedItems: [itemSchema],
   },
   // set this to use virtual below
   {
@@ -58,9 +58,9 @@ userSchema.methods.isCorrectPassword = async function (password: string) {
   return await bcrypt.compare(password, this.password);
 };
 
-// when we query a user, we'll also get another field called `bookCount` with the number of saved books we have
+
 userSchema.virtual('bookCount').get(function () {
-  return this.savedBooks.length;
+  return this.savedItems.length;
 });
 
 const User = model<UserDocument>('User', userSchema);
