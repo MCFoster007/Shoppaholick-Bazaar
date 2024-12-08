@@ -1,2 +1,2 @@
-import User from './User';
-export default { User };
+import { Item, User } from '../models';
+export { Item, User };
