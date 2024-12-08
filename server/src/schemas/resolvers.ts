@@ -1,5 +1,5 @@
-import { Thought, User } from '../models/index.js';
-import { signToken, AuthenticationError } from '../utils/auth.js'; 
+import {Item,User}  from '../models/index';
+import { signToken, AuthenticationError } from '../services/auth'; 
 
 // Define types for the arguments
 interface AddUserArgs {
@@ -19,47 +19,38 @@ interface UserArgs {
   username: string;
 }
 
-interface ThoughtArgs {
-  thoughtId: string;
+interface ItemArgs {
+  ItemId: string;
 }
 
-interface AddThoughtArgs {
+interface AddItemArgs {
   input:{
-    thoughtText: string;
-    thoughtAuthor: string;
+    itemName: string;
+    itemPrice: string;
   }
 }
 
-interface AddCommentArgs {
-  thoughtId: string;
-  commentText: string;
-}
-
-interface RemoveCommentArgs {
-  thoughtId: string;
-  commentId: string;
-}
 
 const resolvers = {
   Query: {
     users: async () => {
-      return User.find().populate('thoughts');
+      return User.find().populate('items');
     },
     user: async (_parent: any, { username }: UserArgs) => {
-      return User.findOne({ username }).populate('thoughts');
+      return User.findOne({ username }).populate('items');
     },
-    thoughts: async () => {
-      return await Thought.find().sort({ createdAt: -1 });
+    items: async () => {
+      return await Item.find().sort({ description: -1 });
     },
-    thought: async (_parent: any, { thoughtId }: ThoughtArgs) => {
-      return await Thought.findOne({ _id: thoughtId });
+    item: async (_parent: any, { ItemId }: ItemArgs) => {
+      return await Item.findOne({ _id: ItemId });
     },
     // Query to get the authenticated user's information
     // The 'me' query relies on the context to check if the user is authenticated
     me: async (_parent: any, _args: any, context: any) => {
       // If the user is authenticated, find and return the user's information along with their thoughts
       if (context.user) {
-        return User.findOne({ _id: context.user._id }).populate('thoughts');
+        return User.findOne({ _id: context.user._id }).populate('items');
       }
       // If the user is not authenticated, throw an AuthenticationError
       throw new AuthenticationError('Could not authenticate user.');
@@ -100,71 +91,37 @@ const resolvers = {
       // Return the token and the user
       return { token, user };
     },
-    addThought: async (_parent: any, { input }: AddThoughtArgs, context: any) => {
+    addItem: async (_parent: any, { input }: AddItemArgs, context: any) => {
       if (context.user) {
-        const thought = await Thought.create({ ...input });
+        const item = await Item.create({ ...input });
 
         await User.findOneAndUpdate(
           { _id: context.user._id },
-          { $addToSet: { thoughts: thought._id } }
+          { $addToSet: { thoughts: item._id } }
         );
 
-        return thought;
+        return item;
       }
       throw AuthenticationError;
       ('You need to be logged in!');
     },
-    addComment: async (_parent: any, { thoughtId, commentText }: AddCommentArgs, context: any) => {
+    removeItem: async (_parent: any, { ItemId }: ItemArgs, context: any) => {
       if (context.user) {
-        return Thought.findOneAndUpdate(
-          { _id: thoughtId },
-          {
-            $addToSet: {
-              comments: { commentText, commentAuthor: context.user.username },
-            },
-          },
-          {
-            new: true,
-            runValidators: true,
-          }
-        );
-      }
-      throw AuthenticationError;
-    },
-    removeThought: async (_parent: any, { thoughtId }: ThoughtArgs, context: any) => {
-      if (context.user) {
-        const thought = await Thought.findOneAndDelete({
-          _id: thoughtId,
-          thoughtAuthor: context.user.username,
+        const item = await Item.findOneAndDelete({
+          _id: ItemId,
+          itemPrice: context.user.username,
         });
 
-        if(!thought){
+        if(!item){
           throw AuthenticationError;
         }
 
         await User.findOneAndUpdate(
           { _id: context.user._id },
-          { $pull: { thoughts: thought._id } }
+          { $pull: { items: item._id } }
         );
 
-        return thought;
-      }
-      throw AuthenticationError;
-    },
-    removeComment: async (_parent: any, { thoughtId, commentId }: RemoveCommentArgs, context: any) => {
-      if (context.user) {
-        return Thought.findOneAndUpdate(
-          { _id: thoughtId },
-          {
-            $pull: {
-              comments: {
-                _id: commentId,
-                commentAuthor: context.user.username,
-              },
-            },
-          },
-          { new: true }
-        );
+        return item;
       }
       throw AuthenticationError;
     },
