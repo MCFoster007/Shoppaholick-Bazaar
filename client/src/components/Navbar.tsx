@@ -1,4 +1,5 @@
 
+
 import { Disclosure, DisclosureButton, DisclosurePanel, Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react'
 import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
 
@@ -19,9 +20,6 @@ import SignUpForm from './SignupForm';
 import LoginForm from './LoginForm';
 
 import Auth from '../utils/auth';
-const Navbar = () => {
-  const [loginCheck, setLoginCheck] = useState(false);
-
   const checkLogin = () => {
     if (auth.loggedIn()) {
       setLoginCheck(true);
@@ -32,8 +30,10 @@ const Navbar = () => {
     console.log(loginCheck);
     checkLogin();
   }, [loginCheck]);
-    
-export default function Example() {
+
+const AppNavbar = () => {
+  // set modal display state
+  const [showModal, setShowModal] = useState(false);
   return (
 
     <Disclosure as="nav" className="bg-light blue-800">
@@ -153,4 +153,5 @@ export default function Example() {
   )
 }
 
-export default Navbar;
+export default AppNavbar;
+

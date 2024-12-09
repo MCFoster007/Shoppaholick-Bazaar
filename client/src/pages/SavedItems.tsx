@@ -1,17 +1,17 @@
 import { useState, useEffect } from 'react';
 import { Container, Card, Button, Row, Col } from 'react-bootstrap';
 
-import { getMe, deleteBook } from '../utils/API';
+import { getMe, deleteItem } from '../utils/API';
 import Auth from '../utils/auth';
-import { removeBookId } from '../utils/localStorage';
+import { removeItemId } from '../utils/localStorage';
 import type { User } from '../models/User';
 
-const SavedBooks = () => {
+const SavedItems = () => {
   const [userData, setUserData] = useState<User>({
     username: '',
     email: '',
     password: '',
-    savedBooks: [],
+    savedItems: [],
   });
 
   // use this to determine if `useEffect()` hook needs to run again
@@ -43,7 +43,7 @@ const SavedBooks = () => {
   }, [userDataLength]);
 
   // create function that accepts the book's mongo _id value as param and deletes the book from the database
-  const handleDeleteBook = async (bookId: string) => {
+  const handleDeleteItem = async (itemId: string) => {
     const token = Auth.loggedIn() ? Auth.getToken() : null;
 
     if (!token) {
@@ -51,7 +51,7 @@ const SavedBooks = () => {
     }
 
     try {
-      const response = await deleteBook(bookId, token);
+      const response = await deleteItem(itemId, token);
 
       if (!response.ok) {
         throw new Error('something went wrong!');
@@ -59,8 +59,8 @@ const SavedBooks = () => {
 
       const updatedUser = await response.json();
       setUserData(updatedUser);
-      // upon success, remove book's id from localStorage
-      removeBookId(bookId);
+      // upon success, remove items id from localStorage
+      removeItemId(itemId);
     } catch (err) {
       console.error(err);
     }
@@ -76,41 +76,41 @@ const SavedBooks = () => {
       <div className='text-light bg-dark p-5'>
         <Container>
           {userData.username ? (
-            <h1>Viewing {userData.username}'s saved books!</h1>
+            <h1>Viewing {userData.username}'s saved items!</h1>
           ) : (
-            <h1>Viewing saved books!</h1>
+            <h1>Viewing saved items!</h1>
           )}
         </Container>
       </div>
       <Container>
         <h2 className='pt-5'>
-          {userData.savedBooks.length
-            ? `Viewing ${userData.savedBooks.length} saved ${
-                userData.savedBooks.length === 1 ? 'book' : 'books'
+          {userData.savedItems.length
+            ? `Viewing ${userData.savedItems.length} saved ${
+                userData.savedItems.length === 1 ? 'item' : 'items'
               }:`
-            : 'You have no saved books!'}
+            : 'You have no saved items!'}
         </h2>
         <Row>
-          {userData.savedBooks.map((book) => {
+          {userData.savedItems.map((item) => {
             return (
               <Col md='4'>
-                <Card key={book.bookId} border='dark'>
-                  {book.image ? (
+                <Card key={item.itemId} border='dark'>
+                  {item.image ? (
                     <Card.Img
-                      src={book.image}
-                      alt={`The cover for ${book.title}`}
+                      src={item.image}
+                      alt={`The cover for ${item.title}`}
                       variant='top'
                     />
                   ) : null}
                   <Card.Body>
-                    <Card.Title>{book.title}</Card.Title>
-                    <p className='small'>Authors: {book.authors}</p>
-                    <Card.Text>{book.description}</Card.Text>
+                    <Card.Title>{item.title}</Card.Title>
+                    <p className='small'>Authors: {item.authors}</p>
+                    <Card.Text>{item.description}</Card.Text>
                     <Button
                       className='btn-block btn-danger'
-                      onClick={() => handleDeleteBook(book.bookId)}
+                      onClick={() => handleDeleteItem(item.itemId)}
                     >
-                      Delete this Book!
+                      Delete this Item!
                     </Button>
                   </Card.Body>
                 </Card>
@@ -123,4 +123,4 @@ const SavedBooks = () => {
   );
 };
 
-export default SavedBooks;
+export default SavedItems;
