@@ -12,7 +12,7 @@ import {
 import Auth from '../utils/auth';
 import { saveBook, searchGoogleBooks } from '../utils/API';
 import { saveBookIds, getSavedBookIds } from '../utils/localStorage';
-import type { Book } from '../models/Book';
+import type { Book } from '../models/Item';
 import type { GoogleAPIBook } from '../models/GoogleAPIBook';
 
 const SearchBooks = () => {
