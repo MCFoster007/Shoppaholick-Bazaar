@@ -1,4 +1,3 @@
-
 import dotenv from 'dotenv';
 dotenv.config();
 import mongoose from 'mongoose';
@@ -15,4 +14,3 @@ const db = async () => {
     }
 };
 export default db;
-
