@@ -17,6 +17,7 @@
     "concurrently": "^8.2.0"
   },
   "dependencies": {
+    "tailwindcss": "^3.4.16"
     "graphql": "^16.9.0"
   }
 }
