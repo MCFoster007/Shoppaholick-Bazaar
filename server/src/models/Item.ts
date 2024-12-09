@@ -1,9 +1,8 @@
-import { Schema, type Document } from 'mongoose';
+import { Schema, type Document, model } from 'mongoose';
 
 export interface ItemDocument extends Document {
-  ItemId: string;
   title: string;
-  price: number;
+  price: string;
   description: string;
   image: string;
   category: string;
@@ -21,10 +20,6 @@ const itemSchema = new Schema<ItemDocument>({
     required: true,
   },
   // saved item id from Googleitems
-  ItemId: {
-    type: String,
-    required: true,
-  },
   image: {
     type: String,
   },
@@ -37,4 +32,6 @@ const itemSchema = new Schema<ItemDocument>({
   },
 });
 
-export default itemSchema;
+const Item = model<ItemDocument>('Item', itemSchema);
+
+export {itemSchema, Item};

@@ -4,8 +4,9 @@ import type { Request, Response } from 'express';
 import db from './config/connection.js'
 import { ApolloServer } from '@apollo/server';// Note: Import from @apollo/server-express
 import { expressMiddleware } from '@apollo/server/express4';
-import { typeDefs, resolvers } from './schemas';
+import { typeDefs, resolvers } from './schemas/index.js';
 import { authenticateToken } from './services/auth.js';
+import apiRoutes from './routes/index.js';
 
 const server = new ApolloServer({
   typeDefs,
@@ -35,6 +36,8 @@ const startApolloServer = async () => {
       res.sendFile(path.join( '../client/dist/index.html'));
     });
   }
+
+  app.use(apiRoutes);
 
   app.listen(PORT, () => {
     console.log(`API server running on port ${PORT}!`);
