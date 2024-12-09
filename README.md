@@ -1,4 +1,4 @@
-# Shoppaholick Bazaar
+# Shoppaholik Bazaar
 
 
 <div align="center">
@@ -14,19 +14,22 @@
 
 <div align="center">
  
-  <h3 align="center">ROUNDHOUSE JOKES</h3>
+
+  <h3 align="center">Shoppaholik Bazaar</h3>
+
 
   <p align="center">
- Roundhouse Jokes is your go-to app for an endless supply of laughs! Featuring a mix of classic humor and the legendary wit of Chuck Norris, this app is designed to deliver a new joke every time you need a pick-me-up. Whether you're a fan of quick one-liners, punny jokes, or the unstoppable humor of Chuck Norris, Roundhouse Jokes has got you covered!
+ "Shoppaholik Bazaar: Where Deals Meet Feels!
+Discover, Connect, and Conquer Your Wishlist – All in One Place!"
 
   <br />
-    <a href="https://github.com/MCFoster007/ROUNDHOUSEJOKES"><strong>Explore the docs »</strong></a>
+    <a href="https://github.com/MCFoster007/Shoppaholick-Bazaar"><strong>Explore the docs »</strong></a>
     <br />
     <br />
   
-    <a href="https://mcfoster007.github.io/ROUNDHOUSEJOKES/>github deployed</a>
+    <a href="">github deployed</a>
     ·
-    <a href="https://roundhousejokes-r6oq.onrender.com">live site</a>
+    <a href="">live site</a>
     ·
 
 
@@ -62,15 +65,14 @@
 
 ## About The Project
 
-[walkthru](https://youtu.be/LUiIxgXJZtk)
+[Walkthrough]()
 
-![signups](./client/public/signupsrnsht.png)
+[Signups]()
 
-![second](./client/public/secondjokeshownss.png)
+[second]()
 
-![signlist](./client/public/signuplistss.png)
+[Signlist]()
 
-![jokes](./client/public/jokeshownss.png)
 
 This project was built using Node, Express, Handlebars, PostgreSQL, and Sequelize.
 
@@ -83,13 +85,14 @@ This project was built using Node, Express, Handlebars, PostgreSQL, and Sequeliz
 [![CSS](https://img.shields.io/badge/Language-CSS-ff8000?style=plastic&logo=CSS3&logoWidth=10)](https://developer.mozilla.org/en-US/docs/Web/CSS)
 [![Node.js](https://img.shields.io/badge/Framework-Node.js-ffff00?style=plastic&logo=Node.js&logoWidth=10)](https://nodejs.org/en/)
 [![Express](https://img.shields.io/badge/Framework-Express-80ff00?style=plastic&logo=Express&logoWidth=10)](https://expressjs.com/)
+
 [![npm](https://img.shields.io/badge/Tool-npm-00ff00?style=plastic&logo=npm&logoWidth=10)](https://www.npmjs.com/)
 [![Bcrypt](https://img.shields.io/badge/Package-Bcrypt-00ffff?style=plastic&logo=npm&logoWidth=10)](https://www.npmjs.com/package/bcrypt)
 [![VS Code](https://img.shields.io/badge/IDE-VSCode-0000ff?style=plastic&logo=VisualStudioCode&logoWidth=10)](https://code.visualstudio.com/docs)
 [![PostgreSQL](https://img.shields.io/badge/Database-PostgreSQL-8000ff?style=plastic&logo=PostgreSQL&logoWidth=10)](https://www.postgresql.org/docs/)
 [![TypeScript](https://img.shields.io/badge/Language-TypeScript-007ACC?style=plastic&logo=typescript&logoWidth=10)](https://www.typescriptlang.org/)
 [![Dotenv](https://img.shields.io/badge/Package-Dotenv-00b894?style=plastic&logo=npm&logoWidth=10)](https://www.npmjs.com/package/dotenv)
-[![Express](https://img.shields.io/badge/Framework-Express-80ff00?style=plastic&logo=express&logoWidth=10)](https://expressjs.com/)
+
 [![pg](https://img.shields.io/badge/Package-pg-0984e3?style=plastic&logo=postgresql&logoWidth=10)](https://www.npmjs.com/package/pg)
 [![Sequelize](https://img.shields.io/badge/Package-Sequelize-6c5ce7?style=plastic&logo=sequelize&logoWidth=10)](https://sequelize.org/)
 [![Nodemon](https://img.shields.io/badge/DevDependency-Nodemon-d63031?style=plastic&logo=nodemon&logoWidth=10)](https://www.npmjs.com/package/nodemon)
@@ -109,7 +112,7 @@ Once completely built, this application will function as a deployed app on Rende
 1. Clone the rep
 
 ```
-git clone https://github.com/MCFoster007/ROUNDHOUSEJOKES.git
+git clone https://github.com/MCFoster007/Shoppaholick-Bazaar
 ```
 
 2. Install dependencies
@@ -184,24 +187,34 @@ Don't forget to give the project a star! Thanks again!
 
 ## License
 
-This project is licensed under the MIT license.
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 
 ## Contact
 
 
-[Sebastian Casadevall](sacasadevall@gmail.com)              
+Sebastian Casadevall
+- [Github Profile](https://github.com/SC089)
+- [Email](sacasadevall@gmail.com)              
 
-[Andre Gianesi](acgianesi@gmail.com)
+Elizabeth D'Cruz
+- [Github Profile](https://github.com/dcruzel)
+- [Email](Liz.c.dcruz@gmail.com)
 
-[Marie-Chantal Foster](mariechantalfoster@gmail.com) 
+Marie-Chantal Foster
+- [Github Profile](https://github.com/MCFoster007) 
+- [Email](mariechantalfoster@gmail.com)
+
+Asuanti Foner
+- [Github Profile](https://github.com/kyreej)
+- [Email](lilboyblue207@gmail.com)
 
 Project Links:
 
-[Github Repository](https://github.com/MCFoster007/ROUNDHOUSEJOKES)
+[Github Repository](https://github.com/MCFoster007/Shoppaholick-Bazaar)
 
 
-[Deployment](https://roundhousejokes-r6oq.onrender.com)
+[Deployment]()
 
 
 
@@ -215,4 +228,4 @@ Project Links:
 
 
 
-# Shoppaholick Bazaar
+# Shoppaholik Bazaar

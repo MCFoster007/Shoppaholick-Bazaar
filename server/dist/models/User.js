@@ -1,7 +1,10 @@
 import { Schema, model } from 'mongoose';
 import bcrypt from 'bcrypt';
 // import schema from Book.js
-import bookSchema from './Book.js';
+
+
+import itemSchema from './Item.js';
+
 const userSchema = new Schema({
     username: {
         type: String,
@@ -18,8 +21,10 @@ const userSchema = new Schema({
         type: String,
         required: true,
     },
-    // set savedBooks to be an array of data that adheres to the bookSchema
-    savedBooks: [bookSchema],
+
+    // set saveditems to be an array of data that adheres to the itemschema
+    savedItems: [itemSchema],
+
 }, 
 // set this to use virtual below
 {
@@ -39,9 +44,9 @@ userSchema.pre('save', async function (next) {
 userSchema.methods.isCorrectPassword = async function (password) {
     return await bcrypt.compare(password, this.password);
 };
-// when we query a user, we'll also get another field called `bookCount` with the number of saved books we have
+
 userSchema.virtual('bookCount').get(function () {
-    return this.savedBooks.length;
+    return this.savedItems.length;
 });
 const User = model('User', userSchema);
 export default User;

@@ -1,3 +1,4 @@
+
 import { Disclosure, DisclosureButton, DisclosurePanel, Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react'
 import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
 
@@ -11,9 +12,30 @@ const navigation = [
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
 }
+import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import { Navbar, Nav, Container, Modal, Tab } from 'react-bootstrap';
+import SignUpForm from './SignupForm';
+import LoginForm from './LoginForm';
 
+import Auth from '../utils/auth';
+const Navbar = () => {
+  const [loginCheck, setLoginCheck] = useState(false);
+
+  const checkLogin = () => {
+    if (auth.loggedIn()) {
+      setLoginCheck(true);
+    }
+  };
+
+  useEffect(() => {
+    console.log(loginCheck);
+    checkLogin();
+  }, [loginCheck]);
+    
 export default function Example() {
   return (
+
     <Disclosure as="nav" className="bg-light blue-800">
       <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
         <div className="relative flex h-16 items-center justify-between">
@@ -130,3 +152,5 @@ export default function Example() {
     </Disclosure>
   )
 }
+
+export default Navbar;
