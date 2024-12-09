@@ -1,6 +1,6 @@
 export interface GoogleAPIVolumeInfo {
   title: string;
-  authors: string[];
+  price: number;
   description: string;
   imageLinks: {
     smallThumbnail: string;
@@ -8,7 +8,7 @@ export interface GoogleAPIVolumeInfo {
   };
 }
 
-export interface GoogleAPIBook {
+export interface GoogleAPIItem {
     id: string;
     volumeInfo: GoogleAPIVolumeInfo;
 }
