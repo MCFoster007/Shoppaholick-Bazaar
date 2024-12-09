@@ -9,16 +9,19 @@ const typeDefs = `
 
   type Item {
     _id: ID
-    itemName: String
-    itemPrice: String
+    title: String!
+    price: String
     description: String!
     category: String
+    image: String
   }
 
   input ItemInput {
-    itemname: String!
-    itemprice: Number!
-    itemcategory: String!
+    title: String!
+    price: String
+    description: String!
+    category: String
+    image: String
   }
 
   input UserInput {
