@@ -54,7 +54,7 @@ const LoginForm = ({}: { handleModalClose: () => void }) => {
     <>
       <Form noValidate validated={validated} onSubmit={handleFormSubmit}>
         <Alert dismissible onClose={() => setShowAlert(false)} show={showAlert} variant='danger'>
-          Something went wrong with your login credentials!
+          login doesn't exist?
         </Alert>
         <Form.Group className='mb-3'>
           <Form.Label htmlFor='email'>Email</Form.Label>
@@ -66,7 +66,7 @@ const LoginForm = ({}: { handleModalClose: () => void }) => {
             value={userFormData.email || ''}
             required
           />
-          <Form.Control.Feedback type='invalid'>Email is required!</Form.Control.Feedback>
+          <Form.Control.Feedback type='invalid'>Login</Form.Control.Feedback>
         </Form.Group>
 
         <Form.Group className='mb-3'>
