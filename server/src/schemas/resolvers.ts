@@ -1,4 +1,4 @@
-import {Item, User}  from '../models';
+import { User}  from '../models';
 import { signToken, AuthenticationError } from '../services/auth'; 
 
 // Define types for the arguments
