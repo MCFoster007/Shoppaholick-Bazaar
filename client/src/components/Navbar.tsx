@@ -1,30 +1,21 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Navbar, Nav, Container, Modal, Tab } from 'react-bootstrap';
 import SignUpForm from './SignupForm';
 import LoginForm from './LoginForm';
 
 import Auth from '../utils/auth';
-const Navbar = () => {
-  const [loginCheck, setLoginCheck] = useState(false);
 
-  const checkLogin = () => {
-    if (auth.loggedIn()) {
-      setLoginCheck(true);
-    }
-  };
-
-  useEffect(() => {
-    console.log(loginCheck);
-    checkLogin();
-  }, [loginCheck]);
+const AppNavbar = () => {
+  // set modal display state
+  const [showModal, setShowModal] = useState(false);
 
   return (
     <>
       <Navbar bg='dark' variant='dark' expand='lg'>
         <Container fluid>
           <Navbar.Brand as={Link} to='/'>
-           Shoppaholick Bazaar
+            Shoppaholick Bazaar
           </Navbar.Brand>
           <Navbar.Toggle aria-controls='navbar' />
           <Navbar.Collapse id='navbar' className='d-flex flex-row-reverse'>
@@ -36,7 +27,7 @@ const Navbar = () => {
               {Auth.loggedIn() ? (
                 <>
                   <Nav.Link as={Link} to='/saved'>
-                    See Your Items
+                    What's in the bag
                   </Nav.Link>
                   <Nav.Link onClick={Auth.logout}>Logout</Nav.Link>
                 </>
@@ -83,4 +74,5 @@ const Navbar = () => {
   );
 };
 
-export default Navbar;
+export default AppNavbar;
+
