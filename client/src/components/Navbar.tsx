@@ -5,7 +5,7 @@ const navigation = [
   { name: 'men', href: '#', current: true },
   { name: 'women', href: '#', current: false },
   { name: 'Wishlist', href: '#', current: false },
-  { name: 'Kids Faves', href: '#', current: false },
+  { name: 'Kids Favorites', href: '#', current: false },
 ]
 
 function classNames(...classes) {
