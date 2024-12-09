@@ -2,6 +2,8 @@
 
 import { Disclosure, DisclosureButton, DisclosurePanel, Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react'
 import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
+// import LoginForm from './LoginForm'
+// import SignupForm from './SignupForm'
 
 const navigation = [
   { name: 'men', href: '#', current: true },
@@ -9,34 +11,37 @@ const navigation = [
   { name: 'Wishlist', href: '#', current: false },
   { name: 'Kids Favorites', href: '#', current: false },
 ]
+{
 
-function classNames(...classes) {
+}
+
+function classNames(...classes: string []) {
   return classes.filter(Boolean).join(' ')
 }
-import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import { Navbar, Nav, Container, Modal, Tab } from 'react-bootstrap';
-import SignUpForm from './SignupForm';
-import LoginForm from './LoginForm';
+// import { useState, useEffect } from 'react';
+// import { Link } from 'react-router-dom';
+// import { Navbar, Nav, Container, Modal, Tab } from 'react-bootstrap';
+// import SignUpForm from './SignupForm';
+// import LoginForm from './LoginForm';
 
-import Auth from '../utils/auth';
-  const checkLogin = () => {
-    if (auth.loggedIn()) {
-      setLoginCheck(true);
-    }
-  };
+// import Auth from '../utils/auth';
+//   const checkLogin = () => {
+//     if (auth.loggedIn()) {
+//       setLoginCheck(true);
+//     }
+//   };
 
-  useEffect(() => {
-    console.log(loginCheck);
-    checkLogin();
-  }, [loginCheck]);
+//   useEffect(() => {
+//     console.log(loginCheck);
+//     checkLogin();
+//   }, [loginCheck]);
 
 const AppNavbar = () => {
-  // set modal display state
-  const [showModal, setShowModal] = useState(false);
+//   // set modal display state
+//   const [showModal, setShowModal] = useState(false);
   return (
 
-    <Disclosure as="nav" className="bg-light blue-800">
+    <Disclosure as="nav" className="bg-light-blue-800">
       <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
         <div className="relative flex h-16 items-center justify-between">
           <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
@@ -51,8 +56,8 @@ const AppNavbar = () => {
           <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
             <div className="flex shrink-0 items-center">
               <img
-                alt="Your Company"
-                src="https://tailwindui.com/plus/img/logos/mark.svg?color=indigo&shade=500"
+                alt="logo"
+                src="https://fsffteastsept-ztz7482.slack.com/files/U07N9KQ6HHN/F083LFTEZJB/shopping-bag-hand-holding-a-shopping-graphics-9096002-1-1-580x386.png"
                 className="h-8 w-auto"
               />
             </div>
@@ -91,7 +96,7 @@ const AppNavbar = () => {
                   <span className="absolute -inset-1.5" />
                   <span className="sr-only">Open user menu</span>
                   <img
-                    alt=""
+                    alt="shopping logo"
                     src="https://fsffteastsept-ztz7482.slack.com/files/U07N9KQ6HHN/F083LFTEZJB/shopping-bag-hand-holding-a-shopping-graphics-9096002-1-1-580x386.png"
                     className="size-8 rounded-full"
                   />
