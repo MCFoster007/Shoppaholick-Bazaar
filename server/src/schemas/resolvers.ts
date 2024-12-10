@@ -25,16 +25,6 @@ interface ItemArgs {
   ItemId: string;
 }
 
-interface AddItemArgs {
-  input: {
-    title: string;
-    description: string;
-    price: string;
-    category: string;
-  }
-}
-
-
 
 
 const resolvers = {
@@ -98,40 +88,6 @@ const resolvers = {
       // Return the token and the user
       return { token, user };
     },
-<<<<<<< HEAD
-    addItem: async (_parent: any, { input }: AddItemArgs, context: any) => {
-      if (context.user) {
-        const item = await Item.create({ ...input });
-
-        await User.findOneAndUpdate(
-          { _id: context.user._id },
-          { $addToSet: { thoughts: item._id } }
-        );
-
-        return item;
-      }
-      throw new AuthenticationError('You need to be logged in!');
-    },
-    removeItem: async (_parent: any, { ItemId }: ItemArgs, context: any) => {
-      if (context.user) {
-        const item = await Item.findOneAndDelete({
-          _id: ItemId,
-          itemPrice: context.user.username,
-        });
-
-        if(!item){
-          throw AuthenticationError;
-        }
-
-        await User.findOneAndUpdate(
-          { _id: context.user._id },
-          { $pull: { items: item._id } }
-        );
-
-        return item;
-      }
-      throw AuthenticationError;
-=======
     saveItem: async (
       _parent: any,
       {
@@ -162,7 +118,6 @@ const resolvers = {
         );
       }
       throw new AuthenticationError("You need to be logged in!");
->>>>>>> 151f09ecbec5798adfde7d042da775a42b870620
     },
   },
 };

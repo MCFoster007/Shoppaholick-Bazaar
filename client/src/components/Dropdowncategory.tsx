@@ -1,19 +1,36 @@
 import { useState } from 'react';
-import type { ChangeEvent, FormEvent } from 'react';
+import type { ChangeEvent } from 'react';
 
-const DropDownCategory =({}: { handleModalClose: () => void }) => {
+interface DropDownCategoryProps {
+  onSelectCategory: (category: string) => void;
+}
+
+const Dropdowncategory = ({ onSelectCategory }: DropDownCategoryProps) => {
+  const [selectedCategory, setSelectedCategory] = useState<string>('');
+
+  const handleCategoryChange = (event: ChangeEvent<HTMLSelectElement>) => {
+    const category = event.target.value;
+    setSelectedCategory(category);
+    onSelectCategory(category);
+  };
+
   return (
-<div className="ui fluid search selection dropdown">
-  <input type="hidden" name="country"/>
-  <div className="default text">Select Country</div>
-  <i className="dropdown icon"></i>
-  <div className="menu">
-  <div className="item" data-value="af"><i className="af flag"></i>Electronics</div>
-  <div className="item" data-value="ax"><i className="ax flag"></i>Aland Islands</div>
-  <div className="item" data-value="al"><i className="al flag"></i>Albania</div>
-  <div className="item" data-value="dz"><i className="dz flag"></i>Algeria</div>
-  </div>
- </div>
-)};
+    <div className="dropdown-container">
+      <select
+        className="fluid search dropdown"
+        value={selectedCategory}
+        onChange={handleCategoryChange}
+      >
+        <option value="" disabled>
+          Select Category
+        </option>
+        <option value="electronics">Electronics</option>
+        <option value="jewelery">Jewelery</option>
+        <option value="men's clothing">Men's Clothing</option>
+        <option value="women's clothing">Women's Clothing</option>
+      </select>
+    </div>
+  );
+};
 
-export default DropDownCategory;
+export default Dropdowncategory;
