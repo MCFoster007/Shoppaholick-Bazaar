@@ -131,7 +131,7 @@ const Searchitems = () => {
                   ) : null}
                   <Card.Body>
                     <Card.Title>{item.title}</Card.Title>
-                    <p className='small'>Authors: {item.authors}</p>
+                    <p className='small'>Authors: {item.price}</p>
                     <Card.Text>{item.description}</Card.Text>
                     {Auth.loggedIn() && (
                       <Button
