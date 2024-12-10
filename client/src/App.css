@@ -33,8 +33,8 @@
     margin: 0 auto;
     padding: 2rem;
     text-align: center;
-    color: white;
-    font-family: "Mountains of Christmas", serif;
+    color: (var --bkgd-purple);
+    font-family: "Italianno", serif;
     font-weight: 700;
     font-style: normal;
     min-height: 100vh; 
@@ -60,12 +60,14 @@
   } */
   
   /*Add background picture to the whole website*/
-  html, body {
-    background-image: url("../public/assets/pexelShoppingBackground.jpg");
+  html{
+    background-image: url("../assets/pexelShoppingBackground.jpg");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    color: white;
+    }
+  body{
+    color: var(--text-darkblue);
     font-family: "Italianno", serif;
     font-weight: 600;
     height: 100%;
