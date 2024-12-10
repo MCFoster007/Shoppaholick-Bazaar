@@ -51,16 +51,16 @@ const SavedItems = () => {
     }
 
     try {
-      const response = await deleteItem(itemId, token);
+      const response = {ok: false}//await deleteItemId(itemId, token);
 
       if (!response.ok) {
         throw new Error('something went wrong!');
       }
 
-      const updatedUser = await response.json();
-      setUserData(updatedUser);
-      // upon success, remove items id from localStorage
-      removeItemId(itemId);
+      // const updatedUser = await response.json();
+      // setUserData(updatedUser);
+      // // upon success, remove items id from localStorage
+      // removeItemId(itemId);
     } catch (err) {
       console.error(err);
     }
@@ -98,13 +98,13 @@ const SavedItems = () => {
                   {item.image ? (
                     <Card.Img
                       src={item.image}
-                      alt={`The cover for ${item.title}`}
+                      alt={`The picture of ${item.title}`}
                       variant='top'
                     />
                   ) : null}
                   <Card.Body>
                     <Card.Title>{item.title}</Card.Title>
-                    <p className='small'>Authors: {item.price}</p>
+                    <p className='small'>Price: {item.price}</p>
                     <Card.Text>{item.description}</Card.Text>
                     <Button
                       className='btn-block btn-danger'
