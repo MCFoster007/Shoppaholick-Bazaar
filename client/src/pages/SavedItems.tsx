@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Container, Card, Button, Row, Col } from 'react-bootstrap';
 
-import { getMe, deleteItem } from '../utils/API';
+import { getMe} from '../utils/API';
 import Auth from '../utils/auth';
 import { removeItemId } from '../utils/localStorage';
 import type { User } from '../models/User';
