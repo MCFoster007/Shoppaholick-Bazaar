@@ -31,6 +31,9 @@ const resolvers = {
     user: async (_parent: any, { username }: UserArgs) => {
       return User.findOne({ username }).populate('savedItems');
     },
+    category: async (_parent: any, { username }: UserArgs) => {
+      return User.findOne({ username }).populate('savedItems');
+    },
     // items: async () => {
     //   return await Item.find().sort({ description: -1 });
     // },

@@ -38,6 +38,7 @@ const typeDefs = `
   type Query {
     users: [User]
     user(username: String!):User
+    category: [Category]!
     items: [Item]!
     item(itemId: ID!): Item
     me: User
