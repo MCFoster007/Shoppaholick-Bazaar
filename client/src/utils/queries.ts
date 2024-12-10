@@ -21,19 +21,20 @@ query User($username: String) {
   }
 }
 `;
-export const QUERY_CATEGORY = gql`
-query Category {
-  category
-}
-`;
+// export const QUERY_CATEGORY = gql`
+// query Category {
+//   category
+// }
+// `;
 
 export const QUERY_ITEMS = gql`
 query Items {
   items {
     _id
-    username
-    email
-    itemCount
+    title
+    price
+    description
+    category
   }
 }
 `;
