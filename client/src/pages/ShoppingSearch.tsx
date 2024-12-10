@@ -1,5 +1,5 @@
 //import React, { useState, useRef } from "react";
-const Shopping = () => {
+const ShoppingSearch = () => {
     return (
         <>
             {
@@ -10,4 +10,4 @@ const Shopping = () => {
         </>
     );
 }
-export default Shopping;
+export default ShoppingSearch;
