@@ -1,3 +1,96 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* ****************************** */
+/*        Color selectors         */
+/* ****************************** */
+
+:root {
+    /* --------------- */
+    /* Colors for text */
+    /* --------------- */
+    --text-pink: #F72585;
+    --text-purple: #7209B7;
+    --text-darkblue: #3A0CA3;
+    --text-blue: #4361EE;
+    --text-lightblue: #4CC9F0;
+    
+    /* ---------------------- */
+    /* Colors for background  */
+    /* ---------------------- */
+    
+    --bkgd-lightpink: #FFD6FF;
+    --bkgd-pink: #E7C6FF;
+    --bkgd-purple: #C8B6FF;
+    --bkgd-lightpurple: #B8C0FF;
+    --bkgd-lightblue: #BBD0ff;
+  }
+  
+  
+  #root {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 2rem;
+    text-align: center;
+    color: white;
+    font-family: "Mountains of Christmas", serif;
+    font-weight: 700;
+    font-style: normal;
+    min-height: 100vh; 
+  }
+  
+  /* Add background picture for the paragraph and heading 5 */
+  /* section p, h5{
+    border: 5px;
+    background-image: url("");
+  } */
+  /* Add Banner for the navigation bar */
+  /* header {
+    background-image: url("");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: black;
+  } */
+  
+  /* Add backgroud to section */
+  /* section {
+    margin-bottom: 50px;
+  } */
+  
+  /*Add background picture to the whole website*/
+  html, body {
+    background-image: url("../public/assets/pexelShoppingBackground.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: white;
+    font-family: "Italianno", serif;
+    font-weight: 600;
+    height: 100%;
+    font-style: normal;
+  }
+  header{
+    top:0px;
+    left:0%;
+    width: 100%;
+    position: fixed;
+  }
+  
+/* ****************************** */
+/*        Footer selectors         */
+/* ****************************** */
+  
+  footer{
+    text-align: center;
+    margin-top: auto;
+    padding: 10px;
+    display: relative;
+    width:100%;
+    background-color: var(--bkgd-lightpink);
+    line-height:10px;
+  }
+  
+  
+  
