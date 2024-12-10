@@ -1,5 +1,4 @@
-import { useState} from 'react';
-// import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import type { FormEvent } from 'react';
 import {
   Container,
@@ -11,43 +10,31 @@ import {
 } from 'react-bootstrap';
 
 // import AuthService from '../utils/auth.js';
-import { searchFakeApiProducts } from '../utils/API';
-// import { saveItem, searchFakeApiProducts } from '../utils/API';
+import DropDownCategory from '../components/Dropdowncategory.tsx';
 
 // import { saveItemIds, getSavedItemIds } from '../utils/localStorage';
 import type { Item} from '../models/Item';
-import type { FakeAPIItem } from '../models/FakeApiProducts';
-import DropDownCategory from '../components/Dropdowncategory.tsx';
-import { QUERY_CATEGORY } from '../utils/queries.ts';
+// import type { FakeAPIItem } from '../models/FakeApiProducts';
 
 const ShoppingSearch = () => {
-// create state for holding returned google api data
-const { loading, data } = useQuery(QUERY_CATEGORY);
-const category = data?.category || [];
 const [searchedItems, setSearchedItems] = useState<Item[]>([]);
 // create state for holding our search field data
 const [searchInput, setSearchInput] = useState('');
+const [selectedCategory, setSelectedCategory] = useState('');
 
-
-// create state to hold saved itemId values
-// const [savedItemIds, setSavedItemIds] = useState(getSavedItemIds());
-
-// set up useEffect hook to save `saveditemIds` list to localStorage on component unmount
-// learn more here: https://reactjs.org/docs/hooks-effect.html#effects-with-cleanup
-// useEffect(() => {
-//   return () => saveItemIds(savedItemIds);
-// });
 
 // create method to search for items and set state on form submit
 const handleFormSubmit = async (event: FormEvent<HTMLFormElement>) => {
   event.preventDefault();
 
-  if (!searchInput) {
-    return false;
+  if (!selectedCategory) {
+    alert('Please select a category!');
+    return;
   }
 
   try {
-    const response = await searchFakeApiProducts(searchInput);
+    const apiUrl = `https://fakestoreapi.com/products/category/${selectedCategory}`;
+    const response = await fetch(apiUrl);
 
     if (!response.ok) {
       throw new Error('something went wrong!');
@@ -56,53 +43,19 @@ const handleFormSubmit = async (event: FormEvent<HTMLFormElement>) => {
 
     const items = await response.json();
 
-    const itemData = items.map((item: FakeAPIItem) => ({
-      itemId: item.id,
-      price: item.volumeInfo.price || ['No to display'],
-      title: item.volumeInfo.title,
-      description: item.volumeInfo.description,
-      image: item.volumeInfo.imageLinks?.thumbnail || '',
-    }));
-    console.log(itemData);
-    setSearchedItems(itemData);
+    setSearchedItems(items);
     setSearchInput('');
   } catch (err) {
     console.error(err);
   }
 };
 
-// // create function to handle saving a item to our database
-// const handleSaveitem = async (itemId: string) => {
-//   // find the item in `searcheditems` state by the matching id
-//   const itemToSave: Item = searchedItems.find((item) => item.itemId === itemId)!;
-
-//   // get token
-//   const token = Auth.loggedIn() ? Auth.getToken() : null;
-
-//   if (!token) {
-//     return false;
-//   }
-
-//   try {
-//     const response = await saveItem(itemToSave, token);
-
-//     if (!response.ok) {
-//       throw new Error('something went wrong!');
-//     }
-
-//     // if item successfully saves to user's account, save item id to state
-//     // setSavedItemIds([...savedItemIds, itemToSave.itemId]);
-//   } catch (err) {
-//     console.error(err);
-//   }
-// };
-
 return (
   <>
     <div className="text-light bg-dark p-5">
       <Container>
         <h1>What am I in the mood for...</h1>
-        <DropDownCategory/>
+        <DropDownCategory onSelectCategory={(category) => setSelectedCategory(category)}/>
         <Form onSubmit={handleFormSubmit}>
           <Row>
             <Col xs={12} md={8}>

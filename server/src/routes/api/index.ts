@@ -20,9 +20,11 @@ router.get('/products/:id', async (req, res) => {
     try {
         const response = await fetch(`https://fakestoreapi.com/products/${id}`);
         const data = await response.json();
-        console.log(data);
+        console.log(data.price, typeof data.price);
+        const stringPrice = data.price.toString();
+        console.log(stringPrice, typeof stringPrice);
         try {
-            const products = await Item.create({title: data.title, price: data.price, description: data.description, category: data.category, image: data.image});
+            const products = await Item.create({title: data.title, price: stringPrice, description: data.description, category: data.category, image: data.image});
             res.json(products);
         } catch (error: any) {
             res.status(500).json({ message: error.message })

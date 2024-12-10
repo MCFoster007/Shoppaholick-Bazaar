@@ -1,5 +1,6 @@
 // import { saveItem } from '../controllers/user-controller.js';
 import  User from '../models/User.js';
+import { Item } from '../models/Item.js';
 import { signToken, AuthenticationError } from '../services/auth.js'; 
 
 // Define types for the arguments
@@ -20,6 +21,9 @@ interface UserArgs {
   username: string;
 }
 
+interface ItemArgs {
+  ItemId: string;
+}
 
 
 
@@ -31,12 +35,12 @@ const resolvers = {
     user: async (_parent: any, { username }: UserArgs) => {
       return User.findOne({ username }).populate('savedItems');
     },
-    // items: async () => {
-    //   return await Item.find().sort({ description: -1 });
-    // },
-    // item: async (_parent: any, { ItemId }: ItemArgs) => {
-    //   return await Item.findOne({ _id: ItemId });
-    // },
+    items: async () => {
+      return await Item.find().sort({ description: -1 });
+    },
+    item: async (_parent: any, { ItemId }: ItemArgs) => {
+      return await Item.findOne({ _id: ItemId });
+    },
     // Query to get the authenticated user's information
     // The 'me' query relies on the context to check if the user is authenticated
     me: async (_parent: any, _args: any, context: any) => {
