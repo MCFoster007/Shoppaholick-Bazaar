@@ -22,18 +22,8 @@ const Footer: React.FC = () => {
             &larr; Go Back
           </button>
         )}
-        <h4>
-          Made with{' '}
-          <span
-            className="emoji"
-            role="img"
-            aria-label="heart"
-            aria-hidden="false"
-          >
-            😀
-          </span>{' '}
-          by the Shoppaholick Bazaar team.
-        </h4>
+        <p>Created by the Shoppaholick Bazaar team 😀
+        </p>
       </div>
     </footer>
   );
