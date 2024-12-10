@@ -1,4 +1,4 @@
-export interface GoogleAPIVolumeInfo {
+export interface FakeAPIVolumeInfo {
   title: string;
   price: number;
   description: string;
@@ -8,7 +8,7 @@ export interface GoogleAPIVolumeInfo {
   };
 }
 
-export interface GoogleAPIItem {
+export interface FakeAPIItem {
     id: string;
-    volumeInfo: GoogleAPIVolumeInfo;
+    volumeInfo: FakeAPIVolumeInfo;
 }
