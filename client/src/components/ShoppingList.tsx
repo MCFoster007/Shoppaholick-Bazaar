@@ -1,7 +1,7 @@
 interface ShoppingItem {
   _id: string;
   title: string;
-  price: string
+  price: string;
   description: string;
   category: string;
   image: string;
