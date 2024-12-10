@@ -10,10 +10,10 @@ import {
 } from 'react-bootstrap';
 
 import Auth from '../utils/auth';
-import { saveItem, searchGoogleItems } from '../utils/API';
+import { saveItem, searchFakeApiProducts } from '../utils/API';
 import { saveItemIds, getSavedItemIds } from '../utils/localStorage';
 import type { Item} from '../models/Item';
-import type { GoogleAPIItem } from '../models/GoogleAPIitem';
+import type { FakeAPIItem } from '../models/FakeApiProducts';
 
 const Searchitems = () => {
   // create state for holding returned google api data
@@ -39,7 +39,7 @@ const Searchitems = () => {
     }
 
     try {
-      const response = await searchGoogleItems(searchInput);
+      const response = await searchFakeApiProducts(searchInput);
 
       if (!response.ok) {
         throw new Error('something went wrong!');
@@ -47,7 +47,7 @@ const Searchitems = () => {
 
       const { items } = await response.json();
 
-      const itemData = items.map((item: GoogleAPIItem) => ({
+      const itemData = items.map((item: FakeAPIItem) => ({
         itemId: item.id,
         price: item.volumeInfo.price || ['No to display'],
         title: item.volumeInfo.title,
@@ -131,7 +131,7 @@ const Searchitems = () => {
                   ) : null}
                   <Card.Body>
                     <Card.Title>{item.title}</Card.Title>
-                    <p className='small'>Authors: {item.authors}</p>
+                    <p className='small'>Authors: {item.price}</p>
                     <Card.Text>{item.description}</Card.Text>
                     {Auth.loggedIn() && (
                       <Button

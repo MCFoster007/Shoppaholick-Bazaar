@@ -1,3 +1,150 @@
-@tailwind base;
+/* @tailwind base;
 @tailwind components;
-@tailwind utilities;
+@tailwind utilities; */
+
+/* ****************************** */
+/*        Color selectors         */
+/* ****************************** */
+
+:root {
+    /* --------------- */
+    /* Colors for text */
+    /* --------------- */
+    --text-pink: #F72585;
+    --text-purple: #7209B7;
+    --text-darkblue: #3A0CA3;
+    --text-blue: #4361EE;
+    --text-lightblue: #4CC9F0;
+    
+    /* ---------------------- */
+    /* Colors for background  */
+    /* ---------------------- */
+    
+    --bkgd-lightpink: #FFD6FF;
+    --bkgd-pink: #E7C6FF;
+    --bkgd-purple: #C8B6FF;
+    --bkgd-lightpurple: #B8C0FF;
+    --bkgd-lightblue: #BBD0ff;
+  }
+  
+  
+  #root {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 2rem;
+    text-align: center;
+    color: (var --text-purple);
+    font-family: "Rancho", serif;
+    font-weight: 700;
+    font-style: normal;
+    min-height: 100vh; 
+  }
+    
+  /*Add background picture to the whole website*/
+
+  
+  html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: "Rancho", serif;
+    font-weight: 600;
+    font-style: normal;
+    color: var(--text-darkblue);
+  }
+
+
+  body {
+    display: flex;
+    flex-direction: column;
+    background-image: url("../public/assets/Background_new.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+  }
+  
+  #root {
+    display: flex;
+    flex-direction: column;
+    flex: 1; /* Ensures the content section grows to fill available space */
+  }
+
+/* ****************************** */
+/*        Header settings        */
+/* ****************************** */
+ header {
+  top: 0;
+  left: 0;
+  width: 100%;
+  position: fixed;
+  z-index: 10; /* Ensure header stays on top */
+  background-color: var(--bkgd-lightpurple);
+  padding: 1rem;
+  font-family: "Rancho", cursive; /* Apply Rancho font */
+  font-size: 2rem; /* Adjust size for better visibility */
+  color: var(--text-darkblue); /* Text color for better readability */
+}
+
+header a {
+  font-family: "Rancho", cursive; /* Ensure links use Rancho font */
+  color: var(--text-purple);
+  text-decoration: none;
+  font-size: 1.8rem;
+  padding: 0 10px; /* Add some spacing between links */
+}
+
+header a:hover {
+  color: var(--text-blue); /* Highlight links on hover */
+}
+
+header img {
+  width: 60px; /* Slightly larger logo */
+  height: 60px;
+  margin-right: 10px; /* Space between logo and text */
+  vertical-align: middle; /* Align logo with text */
+}
+
+/* ****************************** */
+/*        Section settings        */
+/* ****************************** */
+section {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 70px; /* Adjust for header height */
+  margin-bottom: 70px; /* Adjust for footer height */
+  text-align: center;
+}
+
+h1, h2, h3, h4, h5{
+  font-family: "Rancho";
+  font-weight: 600;
+  font-size: larger;
+}
+
+p{
+  font-family: "Caramel";
+  font-weight: 600;
+  font-size:small;
+}
+  
+/* ****************************** */
+/*        Footer selectors        */
+/* ****************************** */
+  
+footer {
+  text-align: center;
+  background-color: var(--bkgd-lightpink);
+  padding: 1rem;
+  width: auto;
+  left: 40%;
+  z-index: 10; /*Keeps footer above other elements*/
+  text-align: center;
+  position: fixed;
+  bottom: 0;
+}
+  
+  
+  

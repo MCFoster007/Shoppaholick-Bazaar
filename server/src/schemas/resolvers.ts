@@ -1,3 +1,4 @@
+// import { saveItem } from '../controllers/user-controller.js';
 import  User from '../models/User.js';
 import { Item } from '../models/Item.js';
 import { signToken, AuthenticationError } from '../services/auth.js'; 
@@ -63,12 +64,13 @@ const resolvers = {
   },
   Mutation: {
     addUser: async (_parent: any, { input }: AddUserArgs) => {
+      console.log (input);
       // Create a new user with the provided username, email, and password
       const user = await User.create({ ...input });
-    
+      console.log (user);
       // Sign a token with the user's information
       const token = signToken(user.username, user.email, user._id);
-    
+      console.log (token);
       // Return the token and the user
       return { token, user };
     },
@@ -96,6 +98,7 @@ const resolvers = {
       // Return the token and the user
       return { token, user };
     },
+<<<<<<< HEAD
     addItem: async (_parent: any, { input }: AddItemArgs, context: any) => {
       if (context.user) {
         const item = await Item.create({ ...input });
@@ -128,6 +131,38 @@ const resolvers = {
         return item;
       }
       throw AuthenticationError;
+=======
+    saveItem: async (
+      _parent: any,
+      {
+        input,
+      // *********ask about itemId or change to ID*****
+      }: { input: { ID: string; title: string; price: string | string } },
+      context: any
+    ) => {
+      if (context.user) {
+        return User.findOneAndUpdate(
+          { _id: context.user._id },
+          { $addToSet: { savedItems: { ...input } } },
+          { new: true, runValidators: true }
+        );
+      }
+      throw new AuthenticationError("You need to be logged in!");
+    },
+    removeItem: async (
+      _parent: any,
+      { itemId }: { itemId: string },
+      context: any
+    ) => {
+      if (context.user) {
+        return User.findOneAndUpdate(
+          { _id: context.user._id },
+          { $pull: { savedItems: { ID: itemId } } },
+          { new: true }
+        );
+      }
+      throw new AuthenticationError("You need to be logged in!");
+>>>>>>> 151f09ecbec5798adfde7d042da775a42b870620
     },
   },
 };

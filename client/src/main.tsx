@@ -3,23 +3,41 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import 'bootstrap/dist/css/bootstrap.min.css'
 
 import App from './App.jsx'
-// import SearchItems from './pages/SearchItems.js'
-// import SavedItems from './pages/SavedItems.js'
+import ShoppingSearch from './pages/ShoppingSearch.js'
+import Login from './pages/Login'
+import Logout from './pages/Logout'
+import Signup from './pages/Signup';
+import Home from './pages/Home'
+import ErrorPage from './pages/Error.js'
+import FriendsNmessage from './pages/FriendsNmessage.js'
 
 const router = createBrowserRouter([
   {
     path: '/',
     element: <App />,
-    errorElement: <h1 className='display-2'>Wrong page!</h1>,
-    // children: [
-    //   {
-    //     index: true,
-    //     element: <SearchItems />
-    //   }, {
-    //     path: '/saved',
-    //     element: <SavedItems />
-    //   }
-    // ]
+    errorElement: <ErrorPage />,
+     children: [
+       {
+         index: true,
+         element: <Home />
+       }, {
+         path: '/login',
+         element: <Login />
+       }, {
+         path: '/signup',
+         element: <Signup />
+       }, {
+         path: '/shopping',
+         element: <ShoppingSearch />
+       }, {
+       }, {
+        path: '/friends',
+        element: <FriendsNmessage />
+       }, {
+         path: '/logout',
+         element: <Logout />
+       }
+    ]
   }
 ])
 

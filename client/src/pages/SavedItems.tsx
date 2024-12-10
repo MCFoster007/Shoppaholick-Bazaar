@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Container, Card, Button, Row, Col } from 'react-bootstrap';
 
-import { getMe, deleteItem } from '../utils/API';
+import { getMe} from '../utils/API';
 import Auth from '../utils/auth';
 import { removeItemId } from '../utils/localStorage';
 import type { User } from '../models/User';
@@ -104,7 +104,7 @@ const SavedItems = () => {
                   ) : null}
                   <Card.Body>
                     <Card.Title>{item.title}</Card.Title>
-                    <p className='small'>Authors: {item.authors}</p>
+                    <p className='small'>Authors: {item.price}</p>
                     <Card.Text>{item.description}</Card.Text>
                     <Button
                       className='btn-block btn-danger'
