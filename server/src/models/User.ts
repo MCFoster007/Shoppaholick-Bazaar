@@ -59,7 +59,7 @@ userSchema.methods.isCorrectPassword = async function (password: string) {
 };
 
 
-userSchema.virtual('bookCount').get(function () {
+userSchema.virtual('itemCount').get(function () {
   return this.savedItems.length;
 });
 

@@ -1,3 +1,4 @@
+// import { saveItem } from '../controllers/user-controller.js';
 import  User from '../models/User.js';
 import { signToken, AuthenticationError } from '../services/auth.js'; 
 
@@ -82,40 +83,37 @@ const resolvers = {
       // Return the token and the user
       return { token, user };
     },
-    // addItem: async (_parent: any, { input }: AddItemArgs, context: any) => {
-    //   if (context.user) {
-    //     const item = await Item.create({ ...input });
-
-    //     await User.findOneAndUpdate(
-    //       { _id: context.user._id },
-    //       { $addToSet: { thoughts: item._id } }
-    //     );
-
-    //     return item;
-    //   }
-    //   throw AuthenticationError;
-    //   ('You need to be logged in!');
-    // },
-    // removeItem: async (_parent: any, { ItemId }: ItemArgs, context: any) => {
-    //   if (context.user) {
-    //     const item = await Item.findOneAndDelete({
-    //       _id: ItemId,
-    //       itemPrice: context.user.username,
-    //     });
-
-    //     if(!item){
-    //       throw AuthenticationError;
-    //     }
-
-    //     await User.findOneAndUpdate(
-    //       { _id: context.user._id },
-    //       { $pull: { items: item._id } }
-    //     );
-
-    //     return item;
-    //   }
-    //   throw AuthenticationError;
-    // },
+    saveItem: async (
+      _parent: any,
+      {
+        input,
+      // *********ask about itemId or change to ID*****
+      }: { input: { ID: string; title: string; price: string | string } },
+      context: any
+    ) => {
+      if (context.user) {
+        return User.findOneAndUpdate(
+          { _id: context.user._id },
+          { $addToSet: { savedItems: { ...input } } },
+          { new: true, runValidators: true }
+        );
+      }
+      throw new AuthenticationError("You need to be logged in!");
+    },
+    removeItem: async (
+      _parent: any,
+      { itemId }: { itemId: string },
+      context: any
+    ) => {
+      if (context.user) {
+        return User.findOneAndUpdate(
+          { _id: context.user._id },
+          { $pull: { savedItems: { ID: itemId } } },
+          { new: true }
+        );
+      }
+      throw new AuthenticationError("You need to be logged in!");
+    },
   },
 };
 

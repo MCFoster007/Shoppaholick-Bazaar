@@ -1,5 +1,5 @@
 import type { User } from '../models/User.js';
-import type { Book } from '../models/Item.js';
+import type { Item } from '../models/Item.js';
 
 // route to get logged in user's info (needs the token)
 export const getMe = (token: string) => {
@@ -31,21 +31,21 @@ export const loginUser = (userData: User) => {
   });
 };
 
-// save book data for a logged in user
-export const saveBook = (bookData: Book, token: string) => {
+// save item data for a logged in user
+export const saveItem = (itemData: Item, token: string) => {
   return fetch('/api/users', {
     method: 'PUT',
     headers: {
       'Content-Type': 'application/json',
       authorization: `Bearer ${token}`,
     },
-    body: JSON.stringify(bookData),
+    body: JSON.stringify(itemData),
   });
 };
 
 // remove saved book data for a logged in user
-export const deleteBook = (bookId: string, token: string) => {
-  return fetch(`/api/users/books/${bookId}`, {
+export const deleteBook = (itemId: string, token: string) => {
+  return fetch(`/api/users/items/${itemId}`, {
     method: 'DELETE',
     headers: {
       authorization: `Bearer ${token}`,
@@ -55,6 +55,6 @@ export const deleteBook = (bookId: string, token: string) => {
 
 // make a search to google books api
 // https://www.googleapis.com/books/v1/volumes?q=harry+potter
-export const searchGoogleBooks = (query: string) => {
-  return fetch(`https://www.googleapis.com/books/v1/volumes?q=${query}`);
+export const searchFakeApiProducts = (id: string) => {
+  return fetch(`https://fakestoreapi.com/products/${id}`);
 };

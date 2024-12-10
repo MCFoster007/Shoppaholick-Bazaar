@@ -35,11 +35,11 @@ export const login = async (req, res) => {
     const token = signToken(user.username, user.password, user._id);
     return res.json({ token, user });
 };
-// save a book to a user's `savedBooks` field by adding it to the set (to prevent duplicates)
+// save a book to a user's `savedItems` field by adding it to the set (to prevent duplicates)
 // user comes from `req.user` created in the auth middleware function
-export const saveBook = async (req, res) => {
+export const saveItem = async (req, res) => {
     try {
-        const updatedUser = await User.findOneAndUpdate({ _id: req.user._id }, { $addToSet: { savedBooks: req.body } }, { new: true, runValidators: true });
+        const updatedUser = await User.findOneAndUpdate({ _id: req.user._id }, { $addToSet: { savedItems: req.body } }, { new: true, runValidators: true });
         return res.json(updatedUser);
     }
     catch (err) {
@@ -47,9 +47,9 @@ export const saveBook = async (req, res) => {
         return res.status(400).json(err);
     }
 };
-// remove a book from `savedBooks`
-export const deleteBook = async (req, res) => {
-    const updatedUser = await User.findOneAndUpdate({ _id: req.user._id }, { $pull: { savedBooks: { bookId: req.params.bookId } } }, { new: true });
+// remove a item from `savedItems`
+export const deleteItem = async (req, res) => {
+    const updatedUser = await User.findOneAndUpdate({ _id: req.user._id }, { $pull: { savedItems: { itemId: req.params.itemId } } }, { new: true });
     if (!updatedUser) {
         return res.status(404).json({ message: "Couldn't find user with this id!" });
     }
