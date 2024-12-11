@@ -8,7 +8,7 @@ export const getSavedItemIds = () => {
   return savedItemIds;
 };
 
-export const saveItemIds = (itemIdArr: string[]) => {
+export const savedItemIds = (itemIdArr: string[]) => {
   if (itemIdArr.length) {
     localStorage.setItem('saved_items', JSON.stringify(itemIdArr));
   } else {
