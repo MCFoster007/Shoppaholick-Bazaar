@@ -1,6 +1,6 @@
 // import { saveItem } from '../controllers/user-controller.js';
 import  User from '../models/User.js';
-import { Item } from '../models/Item.js';
+// import { Item } from '../models/Item.js';
 import { signToken, AuthenticationError } from '../services/auth.js'; 
 
 // Define types for the arguments
@@ -21,9 +21,9 @@ interface UserArgs {
   username: string;
 }
 
-interface ItemArgs {
-  ItemId: string;
-}
+// interface ItemArgs {
+//   ItemId: string;
+// }
 
 
 
