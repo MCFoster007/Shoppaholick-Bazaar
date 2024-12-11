@@ -3,11 +3,10 @@ import type { FormEvent } from 'react';
 import {
   Container,
   Col,
-  Form,
-  Button,
   Card,
   Row
 } from 'react-bootstrap';
+import { FormField,Form } from 'semantic-ui-react';
 
 // import AuthService from '../utils/auth.js';
 import DropDownCategory from '../components/Dropdowncategory.tsx';
@@ -50,21 +49,21 @@ const handleFormSubmit = async (event: FormEvent<HTMLFormElement>) => {
 return (
   <>
     <div className="Category">
+    <h4 className="card-header">Shopping Search</h4>
+    <Form className="ShoppingCategoryBox">
       <Container>
       <h2 className="moving-text">What am I in the mood for...</h2>
         <DropDownCategory onSelectCategory={(category) => setSelectedCategory(category)}/>
-        <Form onSubmit={handleFormSubmit}>
-          <Row>
-            <Col xs={12} md={4}>
-              <Button className="Searchbutton" type='submit' variant='success' size='lg'>
+        <FormField onSubmit={handleFormSubmit}>
+            <button className="Searchbutton" type='submit'>
                 Search
-              </Button>
-            </Col>
-          </Row>
-        </Form>
+            </button>
+        </FormField>
       </Container>
+      </Form>
     </div>
     <div>
+    <FormField>
     <Container className="ShoppingItemsList">
       <h2 className='pt-5'>
         {searchedItems.length
@@ -100,6 +99,7 @@ return (
         })}
       </Row>
     </Container>
+    </FormField>
     </div>
   </>
 );
