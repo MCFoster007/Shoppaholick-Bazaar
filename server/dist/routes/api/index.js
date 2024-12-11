@@ -2,6 +2,7 @@ import express from 'express';
 import fetch from 'node-fetch';
 import { Item } from '../../models/Item.js';
 const router = express.Router();
+// Search API for all items
 router.get('/products', async (_, res) => {
     try {
         const response = await fetch('https://fakestoreapi.com/products');
@@ -13,6 +14,7 @@ router.get('/products', async (_, res) => {
         res.status(500).json({ message: 'Failed to fetch products' });
     }
 });
+// Search API for specific item ID
 router.get('/products/:id', async (req, res) => {
     const { id } = req.params;
     try {

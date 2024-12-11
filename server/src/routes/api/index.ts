@@ -4,6 +4,7 @@ import { Item } from '../../models/Item.js';
 
 const router = express.Router();
 
+// Search API for all items
 router.get('/products', async (_, res) => {
     try {
         const response = await fetch('https://fakestoreapi.com/products');
@@ -15,6 +16,7 @@ router.get('/products', async (_, res) => {
     }
 });
 
+// Search API for specific item ID
 router.get('/products/:id', async (req, res) => {
     const { id } = req.params;
     try {
