@@ -206,4 +206,37 @@ footer {
 }
   
   
+  /* ****************************** */
+/*        button        */
+/* ****************************** */
   
+.custom-button {
+  background-color: #C8B6FF;
+  color:  #F72585;
+}
+
+  /* ****************************** */
+/*      category box      */
+/* ****************************** */
+.custom-bg {
+  background-color:#4CC9F0; 
+  
+}
+/* .custom-text-color {
+  /* color: #F72585;  */
+/* } */ 
+
+@keyframes moveText {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.moving-text {
+  animation: moveText 10s linear infinite; /* Adjust duration and timing as needed */
+  white-space: nowrap; /* Prevent text from wrapping */
+  color:#F72585; 
+}

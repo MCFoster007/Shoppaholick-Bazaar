@@ -35,12 +35,15 @@ const resolvers = {
     user: async (_parent: any, { username }: UserArgs) => {
       return User.findOne({ username }).populate('savedItems');
     },
-    items: async () => {
-      return await Item.find().sort({ description: -1 });
-    },
-    item: async (_parent: any, { ItemId }: ItemArgs) => {
-      return await Item.findOne({ _id: ItemId });
-    },
+    // category: async (_parent: any, { username }: UserArgs) => {
+    //   return User.findOne({ username }).populate('showItems');
+    // },
+    // items: async () => {
+    //   return await Item.find().sort({ description: -1 });
+    // },
+    // item: async (_parent: any, { ItemId }: ItemArgs) => {
+    //   return await Item.findOne({ _id: ItemId });
+    // },
     // Query to get the authenticated user's information
     // The 'me' query relies on the context to check if the user is authenticated
     me: async (_parent: any, _args: any, context: any) => {
