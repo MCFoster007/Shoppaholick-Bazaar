@@ -24,18 +24,13 @@ mutation AddUser($input: UserInput!) {
 `;
 
 export const SAVE_ITEM = gql`
-mutation SaveItem($input: SaveItemInput!) {
+mutation SaveItem($input: ItemInput!) {
     saveItem(input: $input) {
-      _id
-      username
-      email
-      saveditems {
-        title
-        ItemId
-        price
-        description
-        image
-      }
+      title
+      price
+      description
+      category
+      image
     }
   }
 `;

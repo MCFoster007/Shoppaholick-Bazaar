@@ -6,6 +6,7 @@ import { expressMiddleware } from '@apollo/server/express4';
 import { typeDefs, resolvers } from './schemas/index.js';
 import { authenticateToken } from './services/auth.js';
 import apiRoutes from './routes/index.js';
+import { fileURLToPath } from 'url';
 const server = new ApolloServer({
     typeDefs,
     resolvers
@@ -20,10 +21,13 @@ const startApolloServer = async () => {
     app.use('/graphql', expressMiddleware(server, {
         context: authenticateToken
     }));
+    const __filename = fileURLToPath(import.meta.url);
+    const __dirname = path.dirname(__filename);
     if (process.env.NODE_ENV === 'production') {
-        app.use(express.static(path.join('../client/dist')));
+        const distPath = path.resolve(__dirname, '../../client/dist');
+        app.use(express.static(distPath));
         app.get('*', (_req, res) => {
-            res.sendFile(path.join('../client/dist/index.html'));
+            res.sendFile(path.join(distPath, 'index.html'));
         });
     }
     app.use(apiRoutes);

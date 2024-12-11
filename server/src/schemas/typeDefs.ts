@@ -4,13 +4,12 @@ const typeDefs = `
     username: String
     email: String
     password: String
-    items: [Item]!
+    savedItems: [Item]!
   }
 
   type Item {
-    _id: ID
     title: String!
-    price: String
+    price: String!
     description: String!
     category: String
     image: String
