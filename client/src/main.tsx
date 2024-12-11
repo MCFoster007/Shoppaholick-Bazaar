@@ -3,11 +3,11 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import 'bootstrap/dist/css/bootstrap.min.css'
 
 import App from './App.jsx'
-import ShoppingSearch from './pages/ShoppingSearch.js'
+import Shopping from './pages/Shopping.js'
 import Login from './pages/Login'
 import Logout from './pages/Logout'
 import Signup from './pages/Signup';
-import Home from './pages/Home'
+import Home from './pages/Home.js'
 import ErrorPage from './pages/Error.js'
 import FriendsNmessage from './pages/FriendsNmessage.js'
 
@@ -28,7 +28,7 @@ const router = createBrowserRouter([
          element: <Signup />
        }, {
          path: '/shopping',
-         element: <ShoppingSearch />
+         element: <Shopping />
        }, {
        }, {
         path: '/friends',

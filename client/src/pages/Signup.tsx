@@ -1,6 +1,6 @@
 import { useState, type FormEvent, type ChangeEvent } from 'react';
 import { Link } from 'react-router-dom';
-
+import { FormField, Button, Form } from 'semantic-ui-react';
 import { useMutation } from '@apollo/client';
 import { ADD_USER } from '../utils/mutations';
 
@@ -49,8 +49,8 @@ const Signup = () => {
                 <Link to="/">back to the homepage.</Link>
               </p>
             ) : (
-              <form className="ui form" onSubmit={handleFormSubmit}>
-                <div className="field">
+              <Form className="ui form" onSubmit={handleFormSubmit}>
+                <FormField className="field">
                   <label>Username</label>
                   <input
                   className="form-input"
@@ -60,8 +60,8 @@ const Signup = () => {
                   value={formState.username}
                   onChange={handleChange}
                 />
-                </div>
-                <div className="field">
+                </FormField>
+                <FormField className="field">
                   <label>Email</label>
                   <input
                   className="form-input"
@@ -71,8 +71,8 @@ const Signup = () => {
                   value={formState.email}
                   onChange={handleChange}
                   />
-                </div>
-                <div className="field">
+                </FormField>
+                <FormField className="field">
                 <label>Password</label>
                 <input
                   className="form-input"
@@ -82,7 +82,7 @@ const Signup = () => {
                   value={formState.password}
                   onChange={handleChange}
                 />
-                </div>
+                </FormField>
                 <button
                   className="btn btn-block btn-primary"
                   style={{ cursor: 'pointer' }}
@@ -90,7 +90,7 @@ const Signup = () => {
                 >
                   Submit
                 </button>
-              </form>
+              </Form>
             )}
 
             {error && (

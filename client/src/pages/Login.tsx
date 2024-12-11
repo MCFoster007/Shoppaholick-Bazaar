@@ -1,4 +1,5 @@
 import { useState, type FormEvent, type ChangeEvent } from 'react';
+import { FormField, Form } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
 import { LOGIN } from '../utils/mutations';
@@ -49,8 +50,8 @@ const Login = () => {
                 <Link to="/">back to the homepage.</Link>
               </p>
             ) : (
-              <form onSubmit={handleFormSubmit}>
-                <div className="field">
+              <Form onSubmit={handleFormSubmit}>
+                <FormField className="field">
                 <label>Email</label>
                 <input
                   className="form-input"
@@ -60,8 +61,8 @@ const Login = () => {
                   value={formState.email}
                   onChange={handleChange}
                 />
-                </div>
-                <div className="field">
+                </FormField>
+                <FormField className="field">
                 <label>Password</label>
                 <input
                   className="form-input"
@@ -71,15 +72,13 @@ const Login = () => {
                   value={formState.password}
                   onChange={handleChange}
                 />
-                </div>
-                <button
-                  className="btn btn-block btn-primary"
+                </FormField>
+                <button className="btn btn-block btn-primary"
                   style={{ cursor: 'pointer' }}
-                  type="submit"
-                >
+                  type="submit">
                   Submit
                 </button>
-              </form>
+              </Form>
             )}
 
             {error && (

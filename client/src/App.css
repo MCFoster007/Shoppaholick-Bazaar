@@ -74,16 +74,15 @@
   left: 0;
   width: 100%;
   position: fixed;
-  z-index: 10; /* Ensure header stays on top */
+  z-index: 10; 
   background-color: var(--bkgd-lightpurple);
   padding: 1rem;
-  font-family: "Rancho", cursive; /* Apply Rancho font */
-  font-size: 2rem; /* Adjust size for better visibility */
-  color: var(--text-darkblue); /* Text color for better readability */
+  font-family: "Rancho", cursive; 
+  color: var(--text-darkblue); 
 }
 
 header a {
-  font-family: "Rancho", cursive; /* Ensure links use Rancho font */
+  font-family: "Rancho", cursive;
   color: var(--text-purple);
   text-decoration: none;
   font-size: 1.8rem;
@@ -95,11 +94,32 @@ header a:hover {
 }
 
 header img {
-  width: 60px; /* Slightly larger logo */
+  width: 60px; 
   height: 60px;
-  margin-right: 10px; /* Space between logo and text */
+  margin-right: 10px;
   vertical-align: middle; /* Align logo with text */
 }
+
+/* Styling for the right menu */
+.right.menu {
+  display: flex;
+  align-items: center;
+  margin-left: auto; /* Push the right menu to the right */
+}
+
+/* Buttons in the right menu */
+.right.menu .btn {
+  margin: 0 0.5rem;
+}
+
+
+header .ui.secondary.menu {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
 /* ******************************** */
 /*       Login Card settings        */
 /* ******************************** */
@@ -107,6 +127,8 @@ header img {
 .card-header{
   background-color: var(--bkgd-lightpurple);
   color: var(--text-darkblue);
+  font-size: 2rem;
+  max-width: 400px;
 }
 
 .card-body{
@@ -114,6 +136,9 @@ header img {
   background-size: cover; /* Fit the whole image within the element */
   background-position: center; /* Center the image */
   background-repeat: no-repeat; /* Prevent the image from repeating */
+  max-width: 500px;
+  max-height: 300px;
+  font-size: 1.5rem;
 }
 
 /* ****************************** */
@@ -124,6 +149,10 @@ header img {
   background-size: cover; /* Fit the whole image within the element */
   background-position: center; /* Center the image */
   background-repeat: no-repeat; /* Prevent the image from repeating */
+}
+.ShoppingCategoryBox{
+  width: 300px;
+  height:200px;
 }
 .row {
   align-items: center;
@@ -152,7 +181,7 @@ header img {
   color: white; /* Text color for contrast */
   border: none; /* Remove any border */
   border-radius: 5px; /* Slightly rounded corners, set to 0 for a perfect rectangle */
-  font-size: 1rem; /* Adjust font size */
+  font-size: 1.5rem; /* Adjust font size */
   text-align: center; /* Center the text */
   width: auto; /* Let the width adjust to content */
   cursor: pointer; /* Show a pointer on hover */

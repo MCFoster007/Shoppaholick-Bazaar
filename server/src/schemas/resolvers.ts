@@ -91,22 +91,33 @@ const resolvers = {
       // Return the token and the user
       return { token, user };
     },
-    saveItem: async (
-      _parent: any,
-      {
-        input,
-      // *********ask about itemId or change to ID*****
-      }: { input: { ID: string; title: string; price: string | string } },
-      context: any
-    ) => {
-      if (context.user) {
-        return User.findOneAndUpdate(
-          { _id: context.user._id },
-          { $addToSet: { savedItems: { ...input } } },
+    saveItem: async (_parent: any, { input }: { input: any }, context: any) => {
+      if (!context.user) {
+        throw new AuthenticationError('You need to be logged in!');
+      }
+
+      console.log('Item input received:', input);
+
+      if (!input.title) {
+        throw new Error('Title is required for saving the item');
+      }
+
+      try {
+        const updatedUser = await User.findByIdAndUpdate(
+          context.user._id,
+          { $addToSet: { savedItem: input } },
           { new: true, runValidators: true }
         );
+
+        if (!updatedUser) {
+          throw new Error('User not found');
+        }
+
+        return input;
+      } catch (err) {
+        console.error(err);
+        throw new Error('Failed to save item');
       }
-      throw new AuthenticationError("You need to be logged in!");
     },
     removeItem: async (
       _parent: any,

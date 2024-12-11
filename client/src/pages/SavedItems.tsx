@@ -3,7 +3,9 @@ import { Container, Card, Button, Row, Col } from 'react-bootstrap';
 
 import { getMe} from '../utils/API';
 import Auth from '../utils/auth';
-import { removeItemId } from '../utils/localStorage';
+//import { removeItemId } from '../utils/localStorage';
+//import { SAVE_ITEM } from '../../utils/mutations';
+
 import type { User } from '../models/User';
 
 const SavedItems = () => {
@@ -57,10 +59,10 @@ const SavedItems = () => {
         throw new Error('something went wrong!');
       }
 
-      // const updatedUser = await response.json();
-      // setUserData(updatedUser);
-      // // upon success, remove items id from localStorage
-      // removeItemId(itemId);
+      const updatedUser = await response.json();
+      setUserData(updatedUser);
+      // upon success, remove items id from localStorage
+      //removeItemId(itemId);
     } catch (err) {
       console.error(err);
     }
