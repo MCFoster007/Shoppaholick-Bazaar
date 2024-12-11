@@ -3,26 +3,22 @@ import type { FormEvent } from 'react';
 import {
   Container,
   Col,
+  Form,
+  Button,
   Card,
-  Row,
-  Button
+  Row
 } from 'react-bootstrap';
-import { FormField, Form } from 'semantic-ui-react';
+
 // import AuthService from '../utils/auth.js';
 import DropDownCategory from '../components/Dropdowncategory.tsx';
+
 // import { saveItemIds, getSavedItemIds } from '../utils/localStorage';
-import type { Item } from '../models/Item';
+import type { Item} from '../models/Item';
 // import type { FakeAPIItem } from '../models/FakeApiProducts';
-import { useNavigate } from 'react-router-dom';
-import AuthService from '../utils/auth.js';
-import { SAVE_ITEM } from '../utils/mutations.ts';
-import { useMutation } from '@apollo/client';
 
 const ShoppingSearch = () => {
 const [searchedItems, setSearchedItems] = useState<Item[]>([]);
 const [selectedCategory, setSelectedCategory] = useState('');
-const [saveItem] = useMutation(SAVE_ITEM);
-const navigate = useNavigate();
 
 
 // create method to search for items and set state on form submit
@@ -51,64 +47,24 @@ const handleFormSubmit = async (event: FormEvent<HTMLFormElement>) => {
   }
 };
 
-const handleSaveitem = async (item: Item) => {
-
-  const token = AuthService.loggedIn() ? AuthService.getToken() : null;
-
-  if (!token) {
-    alert('You must be logged in to save item');
-    navigate('/login');
-    return;
-  }
-
-  if (!item.title) {
-    item.title = 'Untitled Item';
-  }
-
-  try {
-    const { data } = await saveItem({
-      variables: {
-        input: {
-          title: item.title,
-          ItemId: item.itemId,
-          price: item.price.toString(),
-          description: item.description,
-          image: item.image,
-        },
-      },
-      context: {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      },
-    });
-
-    console.log('Saved item response:', data);
-    alert('Item save successfully!');
-  } catch (err) {
-    console.error('Error saving item:', err);
-    alert('Failed to save item. Please try again.');
-  }
-};
-
 return (
   <>
     <div className="Category">
-    <h4 className="card-header">Shopping Search</h4>
-    <Form className="ShoppingCategoryBox" onSubmit={handleFormSubmit}>
       <Container>
       <h2 className="moving-text">What am I in the mood for...</h2>
         <DropDownCategory onSelectCategory={(category) => setSelectedCategory(category)}/>
-        <FormField onSubmit={handleFormSubmit}>
-            <button className="Searchbutton" type='submit'>
+        <Form onSubmit={handleFormSubmit}>
+          <Row>
+            <Col xs={12} md={4}>
+              <Button className="Searchbutton" type='submit' variant='success' size='lg'>
                 Search
-            </button>
-        </FormField>
+              </Button>
+            </Col>
+          </Row>
+        </Form>
       </Container>
-      </Form>
     </div>
     <div>
-    <FormField>
     <Container className="ShoppingItemsList">
       <h2 className='pt-5'>
         {searchedItems.length
@@ -127,12 +83,16 @@ return (
                   <Card.Title>{item.title}</Card.Title>
                   <p className='small'>Price: {item.price}</p>
                   <Card.Text>{item.description}</Card.Text>
-                  <Button
-                    variant="primary"
-                    onClick={() => handleSaveitem(item)}
-                >
-                    Save Item
-                </Button>
+                  {/* {Auth.loggedIn() && (
+                    <Button
+                      disabled={savedItemIds?.some((saveditemId: string) => saveditemId === item.itemId)}
+                      className='btn-block btn-info'
+                      onClick={() => handleSaveitem(item.itemId)}>
+                      {savedItemIds?.some((saveditemId: string) => saveditemId === item.itemId)
+                        ? 'This item has already been saved!'
+                        : 'Save this item!'}
+                    </Button> */}
+                  {/* )} */}
                 </Card.Body>
               </Card>
             </Col>
@@ -140,7 +100,6 @@ return (
         })}
       </Row>
     </Container>
-    </FormField>
     </div>
   </>
 );
