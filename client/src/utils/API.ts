@@ -53,8 +53,4 @@ export const deleteBook = (itemId: string, token: string) => {
   });
 };
 
-// make a search to google books api
-// https://www.googleapis.com/books/v1/volumes?q=harry+potter
-export const searchFakeApiProducts = (id: string) => {
-  return fetch(`https://fakestoreapi.com/products/${id}`);
-};
+

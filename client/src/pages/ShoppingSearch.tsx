@@ -4,20 +4,23 @@ import {
   Container,
   Col,
   Card,
-  Row
+  Row,
+  Button
 } from 'react-bootstrap';
 import { FormField, Form } from 'semantic-ui-react';
-
 // import AuthService from '../utils/auth.js';
 import DropDownCategory from '../components/Dropdowncategory.tsx';
-
 // import { saveItemIds, getSavedItemIds } from '../utils/localStorage';
-import type { Item} from '../models/Item';
+import type { Item } from '../models/Item';
 // import type { FakeAPIItem } from '../models/FakeApiProducts';
+import { useNavigate } from 'react-router-dom';
+import AuthService from '../utils/auth.js';
+import { saveItem } from '../utils/API.ts'; 
 
 const ShoppingSearch = () => {
 const [searchedItems, setSearchedItems] = useState<Item[]>([]);
 const [selectedCategory, setSelectedCategory] = useState('');
+const navigate = useNavigate();
 
 
 // create method to search for items and set state on form submit
@@ -44,6 +47,28 @@ const handleFormSubmit = async (event: FormEvent<HTMLFormElement>) => {
   } catch (err) {
     console.error(err);
   }
+};
+
+const handleSaveitem = async (item: Item) => {
+    const token = AuthService.loggedIn() ? AuthService.getToken(): null;
+
+    if (!token) {
+        alert('You must be signed in the save items.');
+        navigate('/login');
+        return;
+    }
+
+    try {
+        const response = await saveItem(item, token);
+        if (response.ok) {
+            alert('Item saved successfully!');
+        } else {
+            alert('Failed to save item. Please try again.');
+        }
+    } catch (err) {
+        console.error('Error saving item', err);
+        alert('An error occurred while saving the item.');
+    }
 };
 
 return (
@@ -82,16 +107,12 @@ return (
                   <Card.Title>{item.title}</Card.Title>
                   <p className='small'>Price: {item.price}</p>
                   <Card.Text>{item.description}</Card.Text>
-                  {/* {Auth.loggedIn() && (
-                    <Button
-                      disabled={savedItemIds?.some((saveditemId: string) => saveditemId === item.itemId)}
-                      className='btn-block btn-info'
-                      onClick={() => handleSaveitem(item.itemId)}>
-                      {savedItemIds?.some((saveditemId: string) => saveditemId === item.itemId)
-                        ? 'This item has already been saved!'
-                        : 'Save this item!'}
-                    </Button> */}
-                  {/* )} */}
+                  <Button
+                    variant="primary"
+                    onClick={() => handleSaveitem(item)}
+                >
+                    Save Item
+                </Button>
                 </Card.Body>
               </Card>
             </Col>
