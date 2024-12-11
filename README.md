@@ -27,10 +27,7 @@ Discover, Connect, and Conquer Your Wishlist – All in One Place!"
     <br />
     <br />
   
-    <a href="">github deployed</a>
-    ·
-    <a href="">live site</a>
-    ·
+[SHOPPAHOLICK BAZAAR](https://shoppaholick-bazaar.onrender.com)
 
 
   </p>
@@ -65,16 +62,17 @@ Discover, Connect, and Conquer Your Wishlist – All in One Place!"
 
 ## About The Project
 
-[Walkthrough]()
-
-[Signups]()
-
-[second]()
-
-[Signlist]()
 
 
-This project was built using Node, Express, Handlebars, PostgreSQL, and Sequelize.
+![Signup](./assets/images/signup.png)
+
+![Category](./assets/images/category.png)
+
+![Search](./assets/images/search.png)
+
+![View Items](./assets/images/viewitem.png)
+
+This project was built using MERN: MongoDB,Express, React, Node.js, Graphql, and Apollo.
 
 ### Built With
 
@@ -89,12 +87,12 @@ This project was built using Node, Express, Handlebars, PostgreSQL, and Sequeliz
 [![npm](https://img.shields.io/badge/Tool-npm-00ff00?style=plastic&logo=npm&logoWidth=10)](https://www.npmjs.com/)
 [![Bcrypt](https://img.shields.io/badge/Package-Bcrypt-00ffff?style=plastic&logo=npm&logoWidth=10)](https://www.npmjs.com/package/bcrypt)
 [![VS Code](https://img.shields.io/badge/IDE-VSCode-0000ff?style=plastic&logo=VisualStudioCode&logoWidth=10)](https://code.visualstudio.com/docs)
-[![PostgreSQL](https://img.shields.io/badge/Database-PostgreSQL-8000ff?style=plastic&logo=PostgreSQL&logoWidth=10)](https://www.postgresql.org/docs/)
+[![MongoDB](https://img.shields.io/badge/Database-MongoDB-8000ff?style=plastic&logo=MongoDB&logoWidth=10)](https://www.postgresql.org/docs/)
 [![TypeScript](https://img.shields.io/badge/Language-TypeScript-007ACC?style=plastic&logo=typescript&logoWidth=10)](https://www.typescriptlang.org/)
 [![Dotenv](https://img.shields.io/badge/Package-Dotenv-00b894?style=plastic&logo=npm&logoWidth=10)](https://www.npmjs.com/package/dotenv)
 
 [![pg](https://img.shields.io/badge/Package-pg-0984e3?style=plastic&logo=postgresql&logoWidth=10)](https://www.npmjs.com/package/pg)
-[![Sequelize](https://img.shields.io/badge/Package-Sequelize-6c5ce7?style=plastic&logo=sequelize&logoWidth=10)](https://sequelize.org/)
+[![React](https://img.shields.io/badge/Library-React-6c5ce7?style=plastic&logo=React&logoWidth=10)](https://sequelize.org/)
 [![Nodemon](https://img.shields.io/badge/DevDependency-Nodemon-d63031?style=plastic&logo=nodemon&logoWidth=10)](https://www.npmjs.com/package/nodemon)
 [![JWT](https://img.shields.io/badge/Package-JWT-000000?style=plastic&logo=jsonwebtokens&logoWidth=10)](https://jwt.io/)
 
@@ -140,34 +138,40 @@ npm run start
 
 ## Roadmap
 
-Bug Fixes: Address known issues reported by users.
-Performance Improvements: Optimize API response times and reduce memory usage.
-Documentation: Add comprehensive documentation for all existing features.
+Bug Fixes: Have users send the concern to fix.
+Performance Improvements: Get a real API to have new items and storage users' info in a database.
+
 
 #### MVP
 
 
 - [ ] Front End
 
-  - [ ] User Auth
-  - [ ] User Profile Page
-    - [ ] Routing
-    - [ ] Styling
-  - [ ] Landing Page
-    - [ ] Routing
-    - [ ] Styling
+  - [ ] Public
+  - [ ] Components
+  - [ ] Interfaces
+  - [ ] Models
+  - [ ] Pages
+  - [ ] Utils
 
 - [ ] Back End
-  - [ ] User Auth
+
+  - [ ] Config
+  - [ ] Controllers
   - [ ] Models
-  - [ ] Seeds
-  - [ ] api Routing
+  - [ ] Schema
+  - [ ] API Routing
+  - [ ] Services
+  - [ ] Types
+ 
 
 #### Future Development
 
-- [ ]Do Jokes "on the go" by developing a mobile app for iOS and Android.
-- [ ]Allow users to submit their own jokes, with approval first.
-- [ ]Implement voting on jokes and comment sections.
+- [ ]Add shopping list to the server side
+- [ ]Add a friends feature to share shopping list
+- [ ]Add events between friends to remind birthdays and celebration
+- [ ]Add more shopping search features
+- [ ]Add luxury items for an affordable price
 
 
 ## Contributing
@@ -213,9 +217,9 @@ Project Links:
 
 [Github Repository](https://github.com/MCFoster007/Shoppaholick-Bazaar)
 
+[Deployment](https://mcfoster007.github.io/Shoppaholick-Bazaar/)
 
-[Deployment]()
-
+[Render](https://shoppaholick-bazaar.onrender.com)
 
 
 ## Acknowledgments
@@ -228,4 +232,4 @@ Project Links:
 
 
 
-# Shoppaholik Bazaar
+# Thank you for checking Shoppaholik Bazaar!
