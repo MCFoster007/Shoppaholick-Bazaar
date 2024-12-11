@@ -103,7 +103,7 @@ return (
                 {item.image ? (
                   <Card.Img src={item.image} alt={`The cover for ${item.title}`} variant='top' />
                 ) : null}
-                <Card.Body>
+                <Card.Body  className ="ItemCard">
                   <Card.Title>{item.title}</Card.Title>
                   <p className='small'>Price: {item.price}</p>
                   <Card.Text>{item.description}</Card.Text>
