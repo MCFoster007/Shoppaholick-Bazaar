@@ -3,7 +3,9 @@ import { Container, Card, Button, Row, Col } from 'react-bootstrap';
 
 import { getMe} from '../utils/API';
 import Auth from '../utils/auth';
-import { removeItemId } from '../utils/localStorage';
+//import { removeItemId } from '../utils/localStorage';
+import { ADD_COMMENT } from '../../utils/mutations';
+
 import type { User } from '../models/User';
 
 const SavedItems = () => {
