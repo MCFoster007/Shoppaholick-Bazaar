@@ -15,11 +15,13 @@ import type { Item } from '../models/Item';
 // import type { FakeAPIItem } from '../models/FakeApiProducts';
 import { useNavigate } from 'react-router-dom';
 import AuthService from '../utils/auth.js';
-import { saveItem } from '../utils/API.ts'; 
+import { SAVE_ITEM } from '../utils/mutations.ts';
+import { useMutation } from '@apollo/client';
 
 const ShoppingSearch = () => {
 const [searchedItems, setSearchedItems] = useState<Item[]>([]);
 const [selectedCategory, setSelectedCategory] = useState('');
+const [saveItem] = useMutation(SAVE_ITEM);
 const navigate = useNavigate();
 
 
@@ -50,25 +52,43 @@ const handleFormSubmit = async (event: FormEvent<HTMLFormElement>) => {
 };
 
 const handleSaveitem = async (item: Item) => {
-    const token = AuthService.loggedIn() ? AuthService.getToken(): null;
 
-    if (!token) {
-        alert('You must be signed in the save items.');
-        navigate('/login');
-        return;
-    }
+  const token = AuthService.loggedIn() ? AuthService.getToken() : null;
 
-    try {
-        const response = await saveItem(item, token);
-        if (response.ok) {
-            alert('Item saved successfully!');
-        } else {
-            alert('Failed to save item. Please try again.');
-        }
-    } catch (err) {
-        console.error('Error saving item', err);
-        alert('An error occurred while saving the item.');
-    }
+  if (!token) {
+    alert('You must be logged in to save item');
+    navigate('/login');
+    return;
+  }
+
+  if (!item.title) {
+    item.title = 'Untitled Item';
+  }
+
+  try {
+    const { data } = await saveItem({
+      variables: {
+        input: {
+          title: item.title,
+          ItemId: item.itemId,
+          price: item.price.toString(),
+          description: item.description,
+          image: item.image,
+        },
+      },
+      context: {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      },
+    });
+
+    console.log('Saved item response:', data);
+    alert('Item save successfully!');
+  } catch (err) {
+    console.error('Error saving item:', err);
+    alert('Failed to save item. Please try again.');
+  }
 };
 
 return (
