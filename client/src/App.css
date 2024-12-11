@@ -107,6 +107,8 @@ header img {
 .card-header{
   background-color: var(--bkgd-lightpurple);
   color: var(--text-darkblue);
+  font-size: 2rem;
+  width: 500px;
 }
 
 .card-body{
@@ -114,6 +116,9 @@ header img {
   background-size: cover; /* Fit the whole image within the element */
   background-position: center; /* Center the image */
   background-repeat: no-repeat; /* Prevent the image from repeating */
+  width: 500px;
+  height: 300px;
+  font-size: 1.5rem;
 }
 
 /* ****************************** */
@@ -124,6 +129,10 @@ header img {
   background-size: cover; /* Fit the whole image within the element */
   background-position: center; /* Center the image */
   background-repeat: no-repeat; /* Prevent the image from repeating */
+}
+.ShoppingCategoryBox{
+  width: 300px;
+  height:200px;
 }
 .row {
   align-items: center;
@@ -152,7 +161,7 @@ header img {
   color: white; /* Text color for contrast */
   border: none; /* Remove any border */
   border-radius: 5px; /* Slightly rounded corners, set to 0 for a perfect rectangle */
-  font-size: 1rem; /* Adjust font size */
+  font-size: 1.5rem; /* Adjust font size */
   text-align: center; /* Center the text */
   width: auto; /* Let the width adjust to content */
   cursor: pointer; /* Show a pointer on hover */
