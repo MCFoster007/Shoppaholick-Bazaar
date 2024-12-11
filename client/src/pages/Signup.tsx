@@ -83,13 +83,13 @@ const Signup = () => {
                   onChange={handleChange}
                 />
                 </FormField>
-                <Button
+                <button
                   className="btn btn-block btn-primary"
                   style={{ cursor: 'pointer' }}
                   type="submit"
                 >
                   Submit
-                </Button>
+                </button>
               </Form>
             )}
 

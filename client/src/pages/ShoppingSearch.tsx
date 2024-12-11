@@ -6,7 +6,7 @@ import {
   Card,
   Row
 } from 'react-bootstrap';
-import { FormField,Form } from 'semantic-ui-react';
+import { FormField, Form } from 'semantic-ui-react';
 
 // import AuthService from '../utils/auth.js';
 import DropDownCategory from '../components/Dropdowncategory.tsx';
@@ -50,7 +50,7 @@ return (
   <>
     <div className="Category">
     <h4 className="card-header">Shopping Search</h4>
-    <Form className="ShoppingCategoryBox">
+    <Form className="ShoppingCategoryBox" onSubmit={handleFormSubmit}>
       <Container>
       <h2 className="moving-text">What am I in the mood for...</h2>
         <DropDownCategory onSelectCategory={(category) => setSelectedCategory(category)}/>

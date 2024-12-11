@@ -1,5 +1,5 @@
 import { useState, type FormEvent, type ChangeEvent } from 'react';
-import { FormField, Button, Form } from 'semantic-ui-react';
+import { FormField, Form } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
 import { LOGIN } from '../utils/mutations';
@@ -73,11 +73,11 @@ const Login = () => {
                   onChange={handleChange}
                 />
                 </FormField>
-                <Button className="btn btn-block btn-primary"
+                <button className="btn btn-block btn-primary"
                   style={{ cursor: 'pointer' }}
                   type="submit">
                   Submit
-                </Button>
+                </button>
               </Form>
             )}
 
