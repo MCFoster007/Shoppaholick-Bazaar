@@ -52,33 +52,24 @@ const handleFormSubmit = async (event: FormEvent<HTMLFormElement>) => {
 
 return (
   <>
-    <div className="text-light bg-dark p-5">
+    <div className="Category">
       <Container>
-        <h1>What am I in the mood for...</h1>
+      <h2 className="moving-text">What am I in the mood for...</h2>
         <DropDownCategory onSelectCategory={(category) => setSelectedCategory(category)}/>
         <Form onSubmit={handleFormSubmit}>
           <Row>
-            <Col xs={12} md={8}>
-              <Form.Control
-                name='searchInput'
-                value={searchInput}
-                onChange={(e) => setSearchInput(e.target.value)}
-                type='text'
-                size='lg'
-                placeholder='Search for a item'
-              />
-            </Col>
+            
             <Col xs={12} md={4}>
-              <Button type='submit' variant='success' size='lg'>
-                Search Away
+              <Button className="Searchbutton" type='submit' variant='success' size='lg'>
+                Search
               </Button>
             </Col>
           </Row>
         </Form>
       </Container>
     </div>
-
-    <Container>
+    <div>
+    <Container className="ShoppingItemsList">
       <h2 className='pt-5'>
         {searchedItems.length
           ? `Viewing ${searchedItems.length} results:`
@@ -113,6 +104,7 @@ return (
         })}
       </Row>
     </Container>
+    </div>
   </>
 );
 };
