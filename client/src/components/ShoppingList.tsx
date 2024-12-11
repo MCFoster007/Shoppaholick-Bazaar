@@ -27,14 +27,14 @@ const ShoppingList: React.FC<ShoppingListProps> = ({ shoppingItems = [] }) => {
       </h3>
       <div className="flex-row my-4">
         {shoppingItems &&
-          shoppingItems.map((shoppingItems) => (
+          shoppingItems.map((item) => (
             <div key={shoppingItems._id} className="col-12 mb-3 pb-3">
               <div className="p-3 bg-dark text-light">
-                <h5 className="card-header">{shoppingItems.title}</h5>
-                <p className="card-body">Category: {shoppingItems.category}</p>
-                <p className="card-body">Description: {shoppingItems.description}</p>
-                <p className="card-body">Price: {shoppingItems.price}</p>
-                <p className="card-body">Price: {shoppingItems.image}</p>
+                <h5 className="card-header">{item.title}</h5>
+                <p className="card-body">Category: {item.category}</p>
+                <p className="card-body">Description: {item.description}</p>
+                <p className="card-body">Price: {item.price}</p>
+                <p className="card-body">Image: {item.image}</p>
               </div>
             </div>
           ))}

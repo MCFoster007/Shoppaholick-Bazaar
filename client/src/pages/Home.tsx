@@ -15,12 +15,14 @@ import type { Item } from '../models/Item.ts';
 // import type { FakeAPIItem } from '../models/FakeApiProducts';
 import { useNavigate } from 'react-router-dom';
 import AuthService from '../utils/auth.js';
-import { saveItem } from '../utils/API.ts'; 
+import { SAVE_ITEM } from '../utils/mutations.ts';
+import { useMutation } from '@apollo/client';
 
 const Home = () => {
 const [searchedItems, setSearchedItems] = useState<Item[]>([]);
 const [selectedCategory, setSelectedCategory] = useState('');
 const navigate = useNavigate();
+const [saveItem] = useMutation(SAVE_ITEM);
 
 
 // create method to search for items and set state on form submit
@@ -58,16 +60,31 @@ const handleSaveitem = async (item: Item) => {
         return;
     }
 
+    const input = {
+      title: item.title,
+      price: item.price.toString(),
+      description: item.description,
+      category: item.category,
+      image: item.image,
+    };
+
+    console.log('Formatted input:', input);
+
     try {
-        const response = await saveItem(item, token);
-        if (response.ok) {
-            alert('Item saved successfully!');
-        } else {
-            alert('Failed to save item. Please try again.');
-        }
+      const { data } = await saveItem({
+        variables: { input },
+        context: {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        },
+      });
+
+      console.log('Saved item response:', data);
+      alert('Item saved successfully!');
     } catch (err) {
-        console.error('Error saving item', err);
-        alert('An error occurred while saving the item.');
+      console.error('Error saving item:', err);
+      alert('Failed to save item. Please try again.');
     }
 };
 
