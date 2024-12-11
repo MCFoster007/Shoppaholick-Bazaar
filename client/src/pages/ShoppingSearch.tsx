@@ -18,8 +18,6 @@ import type { Item} from '../models/Item';
 
 const ShoppingSearch = () => {
 const [searchedItems, setSearchedItems] = useState<Item[]>([]);
-// create state for holding our search field data
-const [searchInput, setSearchInput] = useState('');
 const [selectedCategory, setSelectedCategory] = useState('');
 
 
@@ -44,7 +42,6 @@ const handleFormSubmit = async (event: FormEvent<HTMLFormElement>) => {
     const items = await response.json();
 
     setSearchedItems(items);
-    setSearchInput('');
   } catch (err) {
     console.error(err);
   }
@@ -58,16 +55,6 @@ return (
         <DropDownCategory onSelectCategory={(category) => setSelectedCategory(category)}/>
         <Form onSubmit={handleFormSubmit}>
           <Row>
-            {/* <Col xs={12} md={8}>
-              <Form.Control
-                name='searchInput'
-                value={searchInput}
-                onChange={(e) => setSearchInput(e.target.value)}
-                type='text'
-                size='lg'
-                placeholder='Search for a item'
-              />
-            </Col> */}
             <Col xs={12} md={4}>
             <Button type='submit' className='custom-button' size='lg'>Search Away</Button>
             </Col>
