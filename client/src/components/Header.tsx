@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { type MouseEvent} from 'react';
+import logo from "../assets/Logo_new.jpg";
 import Auth from '../utils/auth';
 
 const Header = () => {
@@ -12,7 +13,7 @@ const Header = () => {
     <header>
       <div className="ui secondary menu">
       <img
-              src="../public/assets/Logo_new.jpg"
+              src={logo}
               alt="Shopping logo"
               width="50"
               height="50"
