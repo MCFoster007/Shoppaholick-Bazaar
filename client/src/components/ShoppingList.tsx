@@ -1,3 +1,11 @@
+import {
+  Container,
+  Col,
+  Card,
+  Row,
+  Button
+} from 'react-bootstrap';
+
 interface ShoppingItem {
   _id: string;
   title: string;
@@ -19,26 +27,24 @@ const ShoppingList: React.FC<ShoppingListProps> = ({ shoppingItems = [] }) => {
 
   return (
     <>
-      <h3
-        className="p-5 display-inline-block"
-        style={{ borderBottom: '1px dotted #1a1a1a' }}
-      >
-        Shopping Items
-      </h3>
-      <div className="flex-row my-4">
+      <Container>
+      <div className="ui form">
         {shoppingItems &&
           shoppingItems.map((item) => (
-            <div key={shoppingItems._id} className="col-12 mb-3 pb-3">
-              <div className="p-3 bg-dark text-light">
-                <h5 className="card-header">{item.title}</h5>
+            <div key={shoppingItems._id} className="shoppingItemsContainer">
+              <div>
+              <Card border='dark'>
+                <h2 className="card-header">{item.title}</h2>
                 <p className="card-body">Category: {item.category}</p>
                 <p className="card-body">Description: {item.description}</p>
                 <p className="card-body">Price: {item.price}</p>
-                <p className="card-body">Image: {item.image}</p>
+                <Card.Img src={item.image}alt={`The cover for ${item.title}`} variant='top' height='300px' width='200px'/>
+                </Card>
               </div>
             </div>
           ))}
       </div>
+      </Container>
     </>
   );
 };
