@@ -27,7 +27,7 @@ query User($username: String) {
 // }
 // `;
 
-export const QUERY_ITEMS = gql`
+export const QUERY_ITEM = gql`
 query Items {
   items {
     _id
@@ -39,15 +39,17 @@ query Items {
 }
 `;
 
-export const QUERY_ITEM = gql`
-query Item($item: String) {
-  user(username: $username) {
+export const QUERY_ITEMS = gql`
+  query SavedItems {
+    savedItems {
     _id
-    username
-    email
-    itemCount
+    title
+    price
+    description
+    category
+    image
+    }
   }
-}
 `;
 
 export const QUERY_ME = gql`

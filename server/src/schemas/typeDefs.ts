@@ -15,9 +15,18 @@ const typeDefs = `
     image: String
   }
 
+  type SavedItem {
+  _id: ID!
+  title: String!
+  price: String!
+  description: String!
+  category: String
+  image: String
+  }
+
   input ItemInput {
     title: String!
-    price: String
+    price: String!
     description: String!
     category: String
     image: String
@@ -40,6 +49,7 @@ const typeDefs = `
     items: [Item]!
     item(itemId: ID!): Item
     me: User
+    savedItems: [SavedItem]!
   }
 
   type Mutation {

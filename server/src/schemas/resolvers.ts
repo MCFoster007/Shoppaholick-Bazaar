@@ -54,6 +54,33 @@ const resolvers = {
       // If the user is not authenticated, throw an AuthenticationError
       throw new AuthenticationError('Could not authenticate user.');
     },
+    savedItems: async (_parent: any, _args: any, context: any) => {
+      console.log('Context user:', context.user);
+
+      if (!context.user) {
+        throw new AuthenticationError('You need to be logged in!');
+      }
+
+      try {
+        const user = await User.findById(context.user._id).select('savedItems');
+        if (!user) {
+          throw new Error('User not found');
+        }
+
+        console.log('Fetched saved items:', user.savedItems);
+        return user.savedItems.map((item: any) => ({
+          _id: item._id.toString(),
+          title: item.title,
+          price: item.price,
+          description: item.description,
+          category: item.category,
+          image: item.image,
+        }));
+      } catch (err) {
+        console.error('Error fetching saved items:', err);
+        throw new Error('Failed to fetch saved items');
+      }
+    },
   },
   Mutation: {
     addUser: async (_parent: any, { input }: AddUserArgs) => {
@@ -98,14 +125,24 @@ const resolvers = {
 
       console.log('Item input received:', input);
 
-      if (!input.title) {
-        throw new Error('Title is required for saving the item');
+      const { title, price, description, category, image } = input;
+
+      if (!title || !price || !description || !category || !image) {
+        throw new Error('Missing required fields. Ensure title, price, description, and image are provided.');
       }
+
+      const formattedInput = {
+        title,
+        price: price.toString(),
+        description,
+        category: category || 'Uncategorized',
+        image,
+      };
 
       try {
         const updatedUser = await User.findByIdAndUpdate(
           context.user._id,
-          { $addToSet: { savedItem: input } },
+          { $addToSet: { savedItems: formattedInput } },
           { new: true, runValidators: true }
         );
 
@@ -113,7 +150,9 @@ const resolvers = {
           throw new Error('User not found');
         }
 
-        return input;
+        console.log('Updated user saved items:', updatedUser?.savedItems);
+
+        return formattedInput;
       } catch (err) {
         console.error(err);
         throw new Error('Failed to save item');
