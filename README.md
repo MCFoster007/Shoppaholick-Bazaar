@@ -64,13 +64,15 @@ Discover, Connect, and Conquer Your Wishlist – All in One Place!"
 
 
 
-![Signup](./assets/images/signup.png)
+![Signup](./client/public/assets/images/signup.png)
 
-![Category](./assets/images/category.png)
+![Category](./client/public/assets/images/category.png)
 
-![Search](./assets/images/search.png)
+![Search](./client/public/assets/images/search.png)
 
-![View Items](./assets/images/viewitem.png)
+![View Items](./client/public/assets/images/viewitem.png)
+
+![Add Shopping List](./client/public/assets/images/shoppingList.png)
 
 This project was built using MERN: MongoDB,Express, React, Node.js, Graphql, and Apollo.
 
