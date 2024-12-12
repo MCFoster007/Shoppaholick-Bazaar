@@ -1,6 +1,6 @@
 import { useState, type FormEvent, type ChangeEvent } from 'react';
 import { Link } from 'react-router-dom';
-import { FormField, Button, Form } from 'semantic-ui-react';
+import { FormField, Form } from 'semantic-ui-react';
 import { useMutation } from '@apollo/client';
 import { ADD_USER } from '../utils/mutations';
 

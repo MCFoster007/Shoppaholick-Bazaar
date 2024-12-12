@@ -118,7 +118,7 @@ return (
             <Col md="4" key={item.itemId}>
               <Card border='dark'>
                 {item.image ? (
-                  <Card.Img src={item.image} alt={`The cover for ${item.title}`} variant='top' />
+                  <Card.Img src={item.image} alt={`The cover for ${item.title}`} variant='top' height='300px' width='300px'/>
                 ) : null}
                 <Card.Body  className ="ItemCard">
                   <Card.Title>{item.title}</Card.Title>
